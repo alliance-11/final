@@ -1,6 +1,8 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 const UsersList = ({users, handleDelete}) => {
+
+  
   return (
     <div className="users">
     {users.map((user) => (

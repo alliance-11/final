@@ -68,7 +68,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <h1>Tralala</h1>
+        <h1>Final Project</h1>
 
         <div className="add">
           <input
