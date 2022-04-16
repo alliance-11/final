@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.scss";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import UsersList from "./components/UsersList";
 
 function App() {
@@ -67,9 +69,8 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <div className="container">
-        <h1>Final Project</h1>
-
         <div className="add">
           <input
             type="text"
@@ -111,6 +112,7 @@ function App() {
         </div>
         <UsersList users={users} handleDelete={handleDelete} />
       </div>
+      <Footer />
     </div>
   );
 }
