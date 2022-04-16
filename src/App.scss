@@ -19,6 +19,7 @@ code {
   width: 100%;
   display: grid;
   place-items: center;
+  background: rgb(201, 194, 194);
   header {
     display: grid;
     place-items: center;
@@ -30,6 +31,7 @@ code {
     height: 15vh;
     margin-bottom: 20px;
     border-bottom: 3px solid #ccc;
+    color: rgb(99, 99, 99);
   }
   .links {
     // width: 100%;
@@ -188,5 +190,6 @@ code {
     place-items: center;
     border-top: 3px solid #ccc;
     height: 7vh;
+    color: rgb(99, 99, 99);
   }
 }
