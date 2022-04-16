@@ -23,7 +23,7 @@ function App() {
     {
       id: "3",
       name: "Elisa",
-      profession: "Stydent",
+      profession: "Student",
       hobby: "JavaScript",
       email: "elisa@gmail.com",
       city: "Hamburg",
@@ -60,10 +60,10 @@ function App() {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
 
-  const handleDelete = (id)=>{
-    const deleteUser= users.filter(user=>user.id !== id)
+  const handleDelete = (id) => {
+    const deleteUser = users.filter((user) => user.id !== id);
     setUsers(deleteUser);
-  }
+  };
 
   return (
     <div className="App">
