@@ -69,7 +69,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header title="Final Project" />
       <div className="container">
         <div className="add">
           <input
@@ -112,7 +112,7 @@ function App() {
         </div>
         <UsersList users={users} handleDelete={handleDelete} />
       </div>
-      <Footer />
+      <Footer length={users.length} />
     </div>
   );
 }
