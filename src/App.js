@@ -110,7 +110,11 @@ function App() {
           />
           <button onClick={addUser}>Add</button>
         </div>
-        <UsersList users={users} handleDelete={handleDelete} />
+        {users.length ? (
+          <UsersList users={users} handleDelete={handleDelete} />
+          ):(
+            <p style={{marginTop: "2rem", textAlign: "center"}}>Your List is empty</p>
+          )}
       </div>
       <Footer length={users.length} />
     </div>
