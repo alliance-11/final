@@ -1,5 +1,6 @@
 import React from "react";
 
+// const Footer = () => {
 const Footer = ({ length }) => {
   return (
     <div>

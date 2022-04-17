@@ -25,7 +25,7 @@ function App() {
     {
       id: "3",
       name: "Elisa",
-      profession: "Student",
+      profession: "JavaScript Engineer",
       hobby: "JavaScript",
       email: "elisa@gmail.com",
       city: "Hamburg",
@@ -112,11 +112,14 @@ function App() {
         </div>
         {users.length ? (
           <UsersList users={users} handleDelete={handleDelete} />
-          ):(
-            <p style={{marginTop: "2rem", textAlign: "center"}}>Your List is empty</p>
-          )}
+        ) : (
+          <p style={{ marginTop: "2rem", textAlign: "center" }}>
+            Your List is empty{" "}
+          </p>
+        )}
       </div>
       <Footer length={users.length} />
+ {/* {users.length} List {users.length === 1 ? "User" : "Users"} */}
     </div>
   );
 }
