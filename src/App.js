@@ -46,7 +46,7 @@ function App(name, profession,hobby, email,city) {
 
   return (
     <div className="App">
-      <Header title="Final Project" />
+      <Header title="Final Project ✨" />
       <div className="container">
         <AddForm addUser={addUser} />
         {users.length ? (

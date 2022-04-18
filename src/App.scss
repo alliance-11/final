@@ -19,7 +19,8 @@ code {
   width: 100%;
   display: grid;
   place-items: center;
-  background: rgb(201, 194, 194);
+  background-color: #c9c2c2;
+
   header {
     display: grid;
     place-items: center;
@@ -126,7 +127,7 @@ code {
         justify-content: space-between;
         .item {
           width: 18.5%;
-          border-right: 2px solid #ccc;
+          // border-right: 2px solid #ccc;
           padding-left: 10px;
         }
         .icons {
@@ -191,9 +192,11 @@ code {
     place-items: center;
     border-top: 3px solid #ccc;
     height: 10vh;
-    background-color: #e6e0e0;
+    // background-color: #e6e0e0;
+    background-color: #c9c2c2;
+
     color: rgb(99, 99, 99);
-    h2{
+    h2 {
       margin: 0;
     }
   }
