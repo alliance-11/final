@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import UsersList from "./components/UsersList";
 
-function App() {
+function App(name, profession,hobby, email,city) {
   const [users, setUsers] = useState([
     {
       id: "1",
@@ -32,35 +32,11 @@ function App() {
       city: "Hamburg",
     },
   ]);
-  const [newUser, setNewUser] = useState({
-    name: "",
-    profession: "",
-    hobby: "",
-    email: "",
-    city: "",
-  });
 
-  const addUser = () => {
+  const addUser = (userNew) => {
     const userNewState = {
-      id: Date.now().toString(),
-      name: newUser.name,
-      profession: newUser.profession,
-      hobby: newUser.hobby,
-      email: newUser.email,
-      city: newUser.city,
-    };
+      id: Date.now().toString(), ...userNew};
     setUsers([...users, userNewState]);
-    setNewUser({
-      ...newUser,
-      name: "",
-      profession: "",
-      hobby: "",
-      email: "",
-      city: "",
-    });
-  };
-  const handleAddUser = (e) => {
-    setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
 
   const handleDelete = (id) => {
@@ -72,11 +48,7 @@ function App() {
     <div className="App">
       <Header title="Final Project" />
       <div className="container">
-        <AddForm
-          newUser={newUser}
-          handleAddUser={handleAddUser}
-          addUser={addUser}
-        />
+        <AddForm addUser={addUser} />
         {users.length ? (
           <UsersList users={users} handleDelete={handleDelete} />
         ) : (

@@ -1,6 +1,31 @@
-import React from 'react'
+import { useState } from 'react';
 
-const AddForm = ({newUser, handleAddUser, addUser}) => {
+const AddForm = ({addUser}) => {
+
+  const [newUser, setNewUser] = useState({
+    name: "",
+    profession: "",
+    hobby: "",
+    email: "",
+    city: "",
+  });
+
+  const handleAddUser = (e) => {
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+  };
+
+  const submitAdd=()=>{
+    addUser(newUser);
+  setNewUser({
+    ...newUser,
+    name: "",
+    profession: "",
+    hobby: "",
+    email: "",
+    city: "",
+  });
+}
+
   return (
     <div className="add">
     <input
@@ -39,7 +64,7 @@ const AddForm = ({newUser, handleAddUser, addUser}) => {
       value={newUser.city}
       onChange={handleAddUser}
     />
-    <button onClick={addUser}>Add</button>
+    <button onClick={submitAdd}>Add</button>
   </div>
 
   )
