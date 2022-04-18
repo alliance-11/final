@@ -5,9 +5,9 @@ const Footer = ({ length }) => {
   return (
     <div>
       <footer>
-        <div>
-          {length} List {length === 1 ? "User" : "Users"}
-        </div>
+          <h2>
+            {length} List {length === 1 ? "User" : "Users"}
+          </h2>
         <div>Copyright &copy; {new Date().getFullYear()}</div>
       </footer>
     </div>

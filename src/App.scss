@@ -51,7 +51,7 @@ code {
   }
   .container {
     width: 90%;
-    height: 80vh;
+    height: 73vh;
     display: column;
     margin-top: 20vh;
     font-size: calc(10px + 2vmin);
@@ -114,7 +114,7 @@ code {
       justify-content: center;
 
       .user {
-        position: relative;
+        // position: relative;
         place-items: center;
         height: 3rem;
         margin: 2px;
@@ -125,16 +125,17 @@ code {
         display: flex;
         justify-content: space-between;
         .item {
-          width: 20%;
+          width: 18.5%;
           border-right: 2px solid #ccc;
           padding-left: 10px;
         }
         .icons {
-          position: absolute;
+          // position: absolute;
+          // transform: translateY(-50%);
           top: 50%;
           right: 0;
           font-size: 1.4rem;
-          transform: translateY(-50%);
+          display: flex;
           .icon {
             padding-right: 1px;
             color: rgb(153, 152, 152);
@@ -189,7 +190,11 @@ code {
     display: grid;
     place-items: center;
     border-top: 3px solid #ccc;
-    height: 7vh;
+    height: 10vh;
+    background-color: #e6e0e0;
     color: rgb(99, 99, 99);
+    h2{
+      margin: 0;
+    }
   }
 }
