@@ -1,4 +1,5 @@
-import { useState } from 'react';
+// import { useState, useRef } from 'react';
+import { useState} from 'react';
 
 const AddForm = ({addUser}) => {
 
@@ -9,6 +10,7 @@ const AddForm = ({addUser}) => {
     email: "",
     city: "",
   });
+  // const inputRef=useRef()
 
   const handleAddUser = (e) => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
@@ -29,12 +31,14 @@ const AddForm = ({addUser}) => {
   return (
     <div className="add">
     <input
+      autoFocus
+      // ref={inputRef}
       type="text"
       name="name"
       placeholder="Name"
+      required
       value={newUser.name}
       onChange={handleAddUser}
-      autoFocus
     />
     <input
       type="text"

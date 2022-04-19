@@ -10,7 +10,7 @@ function App(name, profession,hobby, email,city) {
     {
       id: "1",
       name: "Gael",
-      profession: "Web Dev consultant",
+      profession: "Web Dev Consultant",
       hobby: "play computer games",
       email: "gael@gmail.com",
       city: "Berlin",
@@ -18,7 +18,7 @@ function App(name, profession,hobby, email,city) {
     {
       id: "2",
       name: "Robert",
-      profession: "Web Dev trainer",
+      profession: "Web Dev Trainer",
       hobby: "read",
       email: "robert@gmail.com",
       city: "Berlin",
