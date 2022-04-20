@@ -6,7 +6,7 @@ const Footer = ({ length }) => {
     <div>
       <footer>
           <h2>
-            {length} List {length === 1 ? "User" : "Users"}
+            {length} List {length === 1 ? "User ✨" : "Users ✨"}
           </h2>
         <div>Copyright &copy; {new Date().getFullYear()}</div>
       </footer>

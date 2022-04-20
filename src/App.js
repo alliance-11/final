@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import UsersList from "./components/UsersList";
 
-function App(name, profession,hobby, email,city) {
+function App() {
   const [users, setUsers] = useState([
     {
       id: "1",
@@ -46,7 +46,7 @@ function App(name, profession,hobby, email,city) {
 
   return (
     <div className="App">
-      <Header title="Final Project ✨" />
+      <Header title="Final Project " />
       <div className="container">
         <AddForm addUser={addUser} />
         {users.length ? (
