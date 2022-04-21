@@ -1,6 +1,6 @@
-import UserItem from "./UserItem";
+import { UserItem } from "./UserItem";
 
-const UsersList = ({ users, handleDelete }) => {
+export const UsersList = ({ users, handleDelete }) => {
   return (
     <div className="users">
       {users.map((user) => (
@@ -9,5 +9,3 @@ const UsersList = ({ users, handleDelete }) => {
     </div>
   );
 };
-
-export default UsersList;

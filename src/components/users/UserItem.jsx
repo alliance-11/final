@@ -1,6 +1,6 @@
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const UserItem = ({ user, handleDelete }) => {
+export const UserItem = ({ user, handleDelete }) => {
   return (
     <div className="user">
       <div className="item">{user.name}</div>
@@ -20,5 +20,3 @@ const UserItem = ({ user, handleDelete }) => {
     </div>
   );
 };
-
-export default UserItem;
