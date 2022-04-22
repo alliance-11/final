@@ -13,16 +13,16 @@ export const Nav = () => {
         Users
       </NavLink>
       <NavLink
+        to="/login"
+        className={(navData) => (navData.isActive ? "active" : "none")}
+      >
+        Login
+      </NavLink>
+      <NavLink
         to="/teachers"
         className={(navData) => (navData.isActive ? "active" : "none")}
       >
         Teachers
-      </NavLink>
-      <NavLink
-        to="/comp"
-        className={(navData) => (navData.isActive ? "active" : "none")}
-      >
-        Comp
       </NavLink>
     </nav>
   );
