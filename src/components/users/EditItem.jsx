@@ -21,12 +21,12 @@ export const EditItem = ({ user, editUser }) => {
   };
 
   return (
-    <div>
+    <div className="edit">
       <input
-        name="username"
+        name="name"
         ref={inputName}
         onKeyDown={onKeyDown}
-        defaultValue={user.username}
+        defaultValue={user.name}
         readOnly={!editMode}
       />
       <input

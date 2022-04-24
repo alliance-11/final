@@ -1,6 +1,4 @@
-// import { useState, useRef } from 'react';
-import { useState } from "react";
-import { useRef } from "react";
+import { useState, useRef } from 'react';
 
 export const AddForm = ({ addUser }) => {
   const [newUser, setNewUser] = useState({
