@@ -5,6 +5,7 @@ import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { UsersList } from "./UsersList";
 import { EditList } from "./EditList";
+import { Search } from "./Search";
 
 export const Users = () => {
   const [users, setUsers] = useState([
@@ -34,7 +35,7 @@ export const Users = () => {
     },
   ]);
 
-  
+  const [search, setSearch] = useState("");
 
   //Add
   const addUser = (userNew) => {
@@ -63,12 +64,18 @@ export const Users = () => {
     <div className="Users">
       <Header title="Final Project " />
       <div className="container">
+        <Search search={search} setSearch={setSearch} />
         <AddForm addUser={addUser} />
         <EditList users={users} editUser={editUser} />
         {users.length ? (
-          <UsersList users={users} handleDelete={handleDelete} />
-          ) : (
-            <p style={{ marginTop: "2rem", textAlign: "center" }}>
+          <UsersList
+            users={users.filter((user) =>
+              user.name.toLowerCase().includes(search.toLowerCase())
+            )}
+            handleDelete={handleDelete}
+          />
+        ) : (
+          <p style={{ marginTop: "2rem", textAlign: "center" }}>
             Your List is empty{" "}
           </p>
         )}
