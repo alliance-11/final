@@ -70,7 +70,7 @@ export const Users = () => {
         {users.length ? (
           <UsersList
             users={users.filter((user) =>
-              user.name.toLowerCase().includes(search.toLowerCase())
+              user.name.toLowerCase().includes(search.toLowerCase()),
             )}
             handleDelete={handleDelete}
           />
