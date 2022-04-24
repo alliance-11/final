@@ -9,7 +9,12 @@ export const UserItem = ({ user, handleDelete }) => {
       <div className="item">{user.email}</div>
       <div className="item">{user.city}</div>
       <div className="icons">
-        <FaEdit className="icon" role="button" tabIndex="0" />
+        <FaEdit
+          className="icon"
+          role="button"
+          tabIndex="0"
+          // onClick={() => setEditMode(!editMode)}
+        />
         <FaTrashAlt
           className="icon"
           role="button"

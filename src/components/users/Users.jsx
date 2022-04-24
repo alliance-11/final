@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./Users.scss";
-import {AddForm} from "./AddForm";
-import {Footer} from "./Footer";
-import {Header} from "./Header";
-import {UsersList} from "./UsersList";
+import { AddForm } from "./AddForm";
+import { Footer } from "./Footer";
+import { Header } from "./Header";
+import { UsersList } from "./UsersList";
+import { EditList } from "./EditList";
 
-export const Users=()=> {
+export const Users = () => {
   const [users, setUsers] = useState([
     {
       id: "1",
@@ -33,13 +34,26 @@ export const Users=()=> {
     },
   ]);
 
-  const addUser = (userNew) => {
-    const userNewState = {
-      id: Date.now().toString(), ...userNew};
-    setUsers([...users, userNewState]);
-  };
   
 
+  //Add
+  const addUser = (userNew) => {
+    const userNewState = {
+      id: Date.now().toString(),
+      ...userNew,
+    };
+    setUsers([...users, userNewState]);
+  };
+
+  //Edit
+  const editUser = (id, userData) => {
+    const updateUser = users.map((user) =>
+      user.id === id ? { ...user, userData } : user
+    );
+    setUsers(updateUser);
+  };
+
+  //Delete
   const handleDelete = (id) => {
     const deleteUser = users.filter((user) => user.id !== id);
     setUsers(deleteUser);
@@ -50,10 +64,11 @@ export const Users=()=> {
       <Header title="Final Project " />
       <div className="container">
         <AddForm addUser={addUser} />
+        <EditList users={users} editUser={editUser} />
         {users.length ? (
           <UsersList users={users} handleDelete={handleDelete} />
-        ) : (
-          <p style={{ marginTop: "2rem", textAlign: "center" }}>
+          ) : (
+            <p style={{ marginTop: "2rem", textAlign: "center" }}>
             Your List is empty{" "}
           </p>
         )}
@@ -62,4 +77,4 @@ export const Users=()=> {
       {/* {users.length} List {users.length === 1 ? "User" : "Users"} */}
     </div>
   );
-}
+};

@@ -1,7 +1,11 @@
-import React from 'react'
+import { EditItem } from "./EditItem";
 
-export const EditList = () => {
+export const EditList = ({ users, editUser }) => {
   return (
-    <div>EditList</div>
-  )
-}
+    <>
+      {users.map((user) => (
+        <EditItem user={user} editUser={editUser} />
+      ))}
+    </>
+  );
+};
