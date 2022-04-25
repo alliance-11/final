@@ -12,8 +12,6 @@ export const UserItem = ({ user, handleDelete, editUser }) => {
 
     if (e.key === "Enter") {
 
-      console.log("Enter was pressed")
-
       const nameNew = inputName.current.value;
       const hobbyNew = inputHobby.current.value;
       const cityNew = inputCity.current.value;

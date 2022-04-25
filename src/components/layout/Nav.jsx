@@ -6,7 +6,7 @@ export const Nav = () => {
   return (
     <nav>
       <NavLink
-        to="/users"
+        to="/"
         className={(navData) => (navData.isActive ? "active" : "none")}
         end
       >
@@ -25,5 +25,5 @@ export const Nav = () => {
         Teachers
       </NavLink>
     </nav>
-  );
+  )
 };
