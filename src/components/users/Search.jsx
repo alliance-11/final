@@ -1,6 +1,8 @@
 import React from "react";
 
 export const Search = ({ search, setSearch }) => {
+
+  
   return (
     <div className="search">
       <form

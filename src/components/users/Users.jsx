@@ -34,8 +34,8 @@ export const Users = () => {
       city: "Hamburg",
     },
   ]);
-  const [editMode, setEditMode] = useState(false);
   const [search, setSearch] = useState("");
+  const [editMode, setEditMode] = useState(false);
 
   //Add
   const addUser = (userNew) => {
@@ -67,16 +67,16 @@ export const Users = () => {
       <div className="container">
         <Search search={search} setSearch={setSearch} />
         <AddForm addUser={addUser} />
-        {/* {editMode ? */}
+        {editMode ?
           <EditList users={users} editUser={editUser} />
-          {/* : */}
+          :
           <UsersList
           users={users.filter((user) =>
             user.name.toLowerCase().includes(search.toLowerCase())
             )}
             handleDelete={handleDelete} 
             />
-{/* } */}
+}
       </div>
       <Footer length={users.length} />
     </div>

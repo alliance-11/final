@@ -90,6 +90,8 @@
 
       .user {
         // position: relative;
+        display: flex;
+        justify-content: space-between;
         place-items: center;
         height: 3rem;
         margin: 2px;
@@ -97,8 +99,6 @@
         font-size: 16px;
         color: rgb(77, 79, 80);
         border: 2px solid #ccc;
-        display: flex;
-        justify-content: space-between;
         .item {
           width: 30%;
           padding-left: 10px;
@@ -106,7 +106,7 @@
         .icons {
           // position: absolute;
           // transform: translateY(-50%);
-          top: 50%;
+          // top: 50%;
           right: 0;
           font-size: 1.4rem;
           display: flex;
