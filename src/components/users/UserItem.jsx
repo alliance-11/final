@@ -1,11 +1,53 @@
+import { useRef, useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
-export const UserItem = ({ user, handleDelete, editMode, setEditMode }) => {
+export const UserItem = ({ user, handleDelete, editUser }) => {
+  const inputName = useRef();
+  const inputHobby = useRef();
+  const inputCity = useRef();
+
+  const [editMode, setEditMode] = useState(false);
+  const onKeyDown = (e) => {
+    if (e.key === "Enter") {
+      const nameNew = inputName.current.value;
+      const hobbyNew = inputHobby.current.value;
+      const cityNew = inputCity.current.value;
+
+      // setEditMode(true);
+      editUser(user.id, { name: nameNew, hobby: hobbyNew, city: cityNew });
+    }
+  };
+
   return (
     <div className="user">
-      <div className="item">{user.name}</div>
+      {/* <div className="item">{user.name}</div>
       <div className="item">{user.hobby}</div>
-      <div className="item">{user.city}</div>
+      <div className="item">{user.city}</div> */}
+      <div className="edit">
+      <input
+        name="name"
+        ref={inputName}
+        onKeyDown={onKeyDown}
+        defaultValue={user.name}
+        readOnly={!editMode}
+      />
+      <input
+        name="hobby"
+        ref={inputHobby}
+        onKeyDown={onKeyDown}
+        defaultValue={user.hobby}
+        readOnly={!editMode}
+      />
+      <input
+        name="city"
+        ref={inputCity}
+        onKeyDown={onKeyDown}
+        defaultValue={user.city}
+        readOnly={!editMode}
+      />
+      {/* <button onClick={() => setEditMode(!editMode)}>Edit</button> */}
+    </div>
+
       <div className="icons">
         <FaEdit
           className="icon"
@@ -20,6 +62,7 @@ export const UserItem = ({ user, handleDelete, editMode, setEditMode }) => {
           onClick={() => handleDelete(user.id)}
         />
       </div>
+      
     </div>
   );
 };

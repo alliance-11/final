@@ -35,7 +35,6 @@ export const Users = () => {
     },
   ]);
   const [search, setSearch] = useState("");
-  const [editMode, setEditMode] = useState(false);
 
   //Add
   const addUser = (userNew) => {
@@ -52,7 +51,7 @@ export const Users = () => {
       user.id === id ? { ...user, userData } : user
     );
     setUsers(updateUser);
-    setEditMode(false)
+    // setEditMode(false)
   };
 
   //Delete
@@ -67,16 +66,16 @@ export const Users = () => {
       <div className="container">
         <Search search={search} setSearch={setSearch} />
         <AddForm addUser={addUser} />
-        {editMode ?
-          <EditList users={users} editUser={editUser} />
-          :
+        {/* {editMode ? */}
+          {/* <EditList users={users} editUser={editUser}  /> */}
+          {/* : */}
           <UsersList
           users={users.filter((user) =>
             user.name.toLowerCase().includes(search.toLowerCase())
             )}
-            handleDelete={handleDelete} 
+            handleDelete={handleDelete} editUser={editUser}
             />
-}
+{/* } */}
       </div>
       <Footer length={users.length} />
     </div>

@@ -1,10 +1,10 @@
 import { EditItem } from "./EditItem";
 
-export const EditList = ({ users, editUser,editMode, setEditMode }) => {
+export const EditList = ({ users, editUser }) => {
   return (
     <>
       {users.map((user) => (
-        <EditItem user={user} editUser={editUser} editMode={editMode} setEditMode={setEditMode} />
+        <EditItem user={user} editUser={editUser} />
       ))}
     </>
   );
