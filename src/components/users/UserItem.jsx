@@ -27,7 +27,6 @@ export const UserItem = ({ user, handleDelete, editUser }) => {
       {/* <div className="item">{user.name}</div>
       <div className="item">{user.hobby}</div>
       <div className="item">{user.city}</div> */}
-      <div className="edit">
       <input
         name="name"
         ref={inputName}
@@ -49,8 +48,6 @@ export const UserItem = ({ user, handleDelete, editUser }) => {
         defaultValue={user.city}
         readOnly={!editMode}
       />
-      {/* <button onClick={() => setEditMode(!editMode)}>Edit</button> */}
-    </div>
 
       <div className="icons">
         <FaEdit

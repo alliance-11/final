@@ -4,7 +4,6 @@ import { AddForm } from "./AddForm";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { UsersList } from "./UsersList";
-import { EditList } from "./EditList";
 import { Search } from "./Search";
 
 export const Users = () => {
@@ -51,7 +50,6 @@ export const Users = () => {
       user.id === id ? { ...user, userData } : user
     );
     setUsers(updateUser);
-    // setEditMode(false)
   };
 
   //Delete
@@ -75,15 +73,17 @@ export const Users = () => {
       <div className="container">
         <Search search={search} setSearch={setSearch} />
         <AddForm addUser={addUser} />
-        {/* {editMode ? */}
-        {/* <EditList users={users} editUser={editUser}  /> */}
-        {/* : */}
-        <UsersList
-          users={usersFiltered}
-          handleDelete={handleDelete}
-          editUser={editUser}
-        />
-        {/* } */}
+        {users.length ? (
+          <UsersList
+            users={usersFiltered}
+            handleDelete={handleDelete}
+            editUser={editUser}
+          />
+        ) : (
+          <p style={{ marginTop: "2rem", textAlign: "center" }}>
+            Your List is empty!
+          </p>
+        )}
       </div>
       <Footer length={users.length} />
     </div>
