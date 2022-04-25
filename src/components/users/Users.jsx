@@ -34,7 +34,7 @@ export const Users = () => {
       city: "Hamburg",
     },
   ]);
-
+  const [editMode, setEditMode] = useState(false);
   const [search, setSearch] = useState("");
 
   //Add
@@ -52,6 +52,7 @@ export const Users = () => {
       user.id === id ? { ...user, userData } : user
     );
     setUsers(updateUser);
+    setEditMode(false)
   };
 
   //Delete
@@ -66,22 +67,18 @@ export const Users = () => {
       <div className="container">
         <Search search={search} setSearch={setSearch} />
         <AddForm addUser={addUser} />
-        <EditList users={users} editUser={editUser} />
-        {users.length ? (
+        {/* {editMode ? */}
+          <EditList users={users} editUser={editUser} />
+          {/* : */}
           <UsersList
-            users={users.filter((user) =>
-              user.name.toLowerCase().includes(search.toLowerCase()),
+          users={users.filter((user) =>
+            user.name.toLowerCase().includes(search.toLowerCase())
             )}
-            handleDelete={handleDelete}
-          />
-        ) : (
-          <p style={{ marginTop: "2rem", textAlign: "center" }}>
-            Your List is empty{" "}
-          </p>
-        )}
+            handleDelete={handleDelete} 
+            />
+{/* } */}
       </div>
       <Footer length={users.length} />
-      {/* {users.length} List {users.length === 1 ? "User" : "Users"} */}
     </div>
   );
 };

@@ -1,10 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
-export const EditItem = ({ user, editUser }) => {
+export const EditItem = ({ user, editUser, editMode, setEditMode }) => {
   const inputName = useRef();
   const inputHobby = useRef();
-
-  const [editMode, setEditMode] = useState(false);
+  const inputCity = useRef();
 
   useEffect(() => {
     console.log("[UseEffect Hook] SOME STATE was CHANGED in our App");
@@ -14,9 +13,10 @@ export const EditItem = ({ user, editUser }) => {
     if (e.key === "Enter") {
       const nameNew = inputName.current.value;
       const hobbyNew = inputHobby.current.value;
+      const cityNew = inputCity.current.value;
 
-      setEditMode(false);
-      editUser(user.id, { name: nameNew, hobby: hobbyNew });
+      // setEditMode(true);
+      editUser(user.id, { name: nameNew, hobby: hobbyNew, city: cityNew });
     }
   };
 
@@ -30,13 +30,20 @@ export const EditItem = ({ user, editUser }) => {
         readOnly={!editMode}
       />
       <input
-        name="age"
+        name="hobby"
         ref={inputHobby}
         onKeyDown={onKeyDown}
-        defaultValue={user.age}
+        defaultValue={user.hobby}
         readOnly={!editMode}
       />
-      <button onClick={() => setEditMode(!editMode)}>Edit</button>
+      <input
+        name="city"
+        ref={inputCity}
+        onKeyDown={onKeyDown}
+        defaultValue={user.city}
+        readOnly={!editMode}
+      />
+      {/* <button onClick={() => setEditMode(!editMode)}>Edit</button> */}
     </div>
   );
 };
