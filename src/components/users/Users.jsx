@@ -61,9 +61,12 @@ export const Users = () => {
   };
 
   // apply given search filter to users array
-  const usersFiltered = users.filter((user) =>
-      user.name.toLowerCase().includes(search.toLowerCase()) // ONE criteria
-  )
+  const usersFiltered = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(search.toLowerCase()) || // ONE criteria
+      user.hobby.toLowerCase().includes(search.toLowerCase()) ||
+      user.city.toLowerCase().includes(search.toLowerCase())
+  );
 
   // LAYOUT
   return (
@@ -76,7 +79,7 @@ export const Users = () => {
         {/* <EditList users={users} editUser={editUser}  /> */}
         {/* : */}
         <UsersList
-          users={usersFiltered }
+          users={usersFiltered}
           handleDelete={handleDelete}
           editUser={editUser}
         />
@@ -84,5 +87,5 @@ export const Users = () => {
       </div>
       <Footer length={users.length} />
     </div>
-  )
+  );
 };
