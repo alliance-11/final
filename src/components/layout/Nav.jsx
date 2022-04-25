@@ -6,7 +6,7 @@ export const Nav = () => {
   return (
     <nav>
       <NavLink
-        to="/"
+        to="/users"
         className={(navData) => (navData.isActive ? "active" : "none")}
         end
       >

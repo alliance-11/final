@@ -60,6 +60,12 @@ export const Users = () => {
     setUsers(deleteUser);
   };
 
+  // apply given search filter to users array
+  const usersFiltered = users.filter((user) =>
+      user.name.toLowerCase().includes(search.toLowerCase()) // ONE criteria
+  )
+
+  // LAYOUT
   return (
     <div className="Users">
       <Header title="Final Project " />
@@ -67,17 +73,16 @@ export const Users = () => {
         <Search search={search} setSearch={setSearch} />
         <AddForm addUser={addUser} />
         {/* {editMode ? */}
-          {/* <EditList users={users} editUser={editUser}  /> */}
-          {/* : */}
-          <UsersList
-          users={users.filter((user) =>
-            user.name.toLowerCase().includes(search.toLowerCase())
-            )}
-            handleDelete={handleDelete} editUser={editUser}
-            />
-{/* } */}
+        {/* <EditList users={users} editUser={editUser}  /> */}
+        {/* : */}
+        <UsersList
+          users={usersFiltered }
+          handleDelete={handleDelete}
+          editUser={editUser}
+        />
+        {/* } */}
       </div>
       <Footer length={users.length} />
     </div>
-  );
+  )
 };

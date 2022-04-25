@@ -147,8 +147,9 @@ code {
             }
           }
         }
-      }
+      } // end of .user
       .edit {
+        display: flex;
         input {
           color: grey;
           width: 68%;
@@ -181,7 +182,7 @@ code {
           border: 2px solid #ccc;
         }
       }
-    }
+    } // end of .users
   }
   footer {
     position: fixed;
