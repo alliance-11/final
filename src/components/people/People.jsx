@@ -3,8 +3,8 @@ import { Add } from "./Add";
 import { List } from "./List";
 import { Search } from "./Search";
 
-import "./Teachers.scss";
-export const Teachers = () => {
+import "./People.scss";
+export const People = () => {
   const [teachers, setTeachers] = useState([
     { id: "1", name: "Rob", city: "Berlin" },
     { id: "2", name: "Marlene", city: "Hamburg" },
