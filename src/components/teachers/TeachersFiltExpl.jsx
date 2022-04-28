@@ -4,6 +4,8 @@ import "./Teachers.scss";
 
 export const Teachers = () => {
 
+
+  // FILTER state => object => mit den Filter settings
   const [cityFilter, setCityFilter] = useState([])
 
   const [teachers, setTeachers] = useState([
@@ -11,8 +13,6 @@ export const Teachers = () => {
     { id: "2", name: "Marlene", city: "Hamburg" },
     { id: "3", name: "Olaf ?", city: "Hamburg" },
     { id: "4", name: "Julian", city: "Berlin" },
-    { id: "5", name: "Heiko", city: "Hamburg" },
-    { id: "6", name: "Gael", city: "Berlin" },
   ]);
   const [newTeacher, setNewTeacher] = useState({
     name: "",
@@ -21,12 +21,25 @@ export const Teachers = () => {
 
   const refCheckbox = useRef();
 
+
+  // update SETTINGS 
+  // we do FILTERING later...
   const onChange = (e) => {
+    console.log(refCheckbox.current.checked); //  in "checked" steht drin, ob die Checkbox geklickt ist!
+    // ODER: im event steht das aktuell (!) geklickte Item drin
+    console.log(e.target.name, e.target.checked);
+
+    // toggle filter setting 
     const cityName = e.target.value
     const cityChecked = e.target.checked
+
+    // checked or unchecked?
+    
+      // if checkbox for city checked => add city to cities array
     if(cityChecked) {
       setCityFilter([...cityFilter, cityName]) // this always ADDs a new item
     }
+    // if checkbox for city UNchecked => remove from cities array
     else {
       const citiesNew = cityFilter.filter( city => city !== cityName )
       setCityFilter( citiesNew )
@@ -54,10 +67,19 @@ export const Teachers = () => {
     setTeachers(deleteTeacher);
   };
 
+  // FILTER
   let filteredTeachers = teachers
+
+
+  // only filter teachers if we have at least ONE city set
   if( cityFilter.length ) {
-    filteredTeachers = teachers.filter( teacher => cityFilter.includes( teacher.city ))
-}
+
+    // filter by cities
+    filteredTeachers = teachers.filter( teacher => {
+      return cityFilter.includes( teacher.city )
+    })
+
+  }
   
   // RENDERING of data into HTML
   return (
@@ -99,16 +121,6 @@ export const Teachers = () => {
             Hamburg
             <input
               value="Hamburg"
-              type="checkbox"
-              ref={refCheckbox}
-              onChange={onChange}
-            />
-          </label>
-          <label htmlFor="Madrid">
-            {" "}
-            Madrid
-            <input
-              value="Madrid"
               type="checkbox"
               ref={refCheckbox}
               onChange={onChange}
