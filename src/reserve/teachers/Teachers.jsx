@@ -3,8 +3,8 @@ import { Add } from "./Add";
 import { List } from "./List";
 import { Search } from "./Search";
 
-import "./People.scss";
-export const People = () => {
+import "./Teachers.scss";
+export const Teachers = () => {
   const [teachers, setTeachers] = useState([
     { id: "1", name: "Rob", city: "Berlin" },
     { id: "2", name: "Marlene", city: "Hamburg" },
@@ -33,9 +33,9 @@ export const People = () => {
   );
 
   return (
-    <div className="People">
+    <div className="Teachers">
       <div className="container">
-        <h2>People</h2>
+        <h2>Teachers</h2>
         <Add addTeacher={addTeacher} />
         <Search search={search} setSearch={setSearch} />
         <List handleDelete={handleDelete} teachers={handleSearch} />

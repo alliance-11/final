@@ -1,44 +1,111 @@
-import { useState } from "react";
-import { Add } from "./Add";
-import { List } from "./List";
-import { Search } from "./Search";
-
+import { useRef, useState } from "react";
+import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import "./Teachers.scss";
+
 export const Teachers = () => {
   const [teachers, setTeachers] = useState([
     { id: "1", name: "Rob", city: "Berlin" },
     { id: "2", name: "Marlene", city: "Hamburg" },
     { id: "3", name: "Olaf ?", city: "Hamburg" },
     { id: "4", name: "Julian", city: "Berlin" },
-    { id: "5", name: "Heiko", city: "München"},
   ]);
-  const [search, setSearch] = useState("");
+  const [newTeacher, setNewTeacher] = useState({
+    name: "",
+    city: "",
+  });
 
-  const addTeacher = (newTeacher) => {
+  const refCheckbox = useRef();
+
+  const onChange = (e) => {
+
+    
+    console.log(refCheckbox.current.checked); //  in "checked" steht drin, ob die Checkbox geklickt ist!
+    // ODER: im event steht das aktuell (!) geklickte Item drin
+    console.log(e.target.name, e.target.checked);
+    // setTeachers([...teachers, refCheckbox.current.checked])
+  };
+
+  const addTeacher = () => {
     const addNewTeacher = {
       id: Date.now().toString(),
-      ...newTeacher,
+      name: newTeacher.name,
+      city: newTeacher.city,
     };
     setTeachers([...teachers, addNewTeacher]);
+    setNewTeacher({ ...newTeacher, name: "", city: "" });
+  };
+  const handleAddTeacher = (e) => {
+    setNewTeacher({ ...newTeacher, [e.target.name]: e.target.value });
   };
 
   const handleDelete = (id) => {
-    const deleteItem = teachers.filter((teacher) => teacher.id !== id);
-    setTeachers(deleteItem);
+    const deleteTeacher = teachers.filter((teacher) => teacher.id !== id);
+    setTeachers(deleteTeacher);
   };
-  const handleSearch = teachers.filter(
-    (teacher) =>
-      teacher.name.toLowerCase().includes(search.toLowerCase()) ||
-      teacher.city.toLowerCase().includes(search.toLowerCase())
-  );
 
   return (
     <div className="Teachers">
+      <h2>Teachers</h2>
       <div className="container">
-        <h2>Teachers</h2>
-        <Add addTeacher={addTeacher} />
-        <Search search={search} setSearch={setSearch} />
-        <List handleDelete={handleDelete} teachers={handleSearch} />
+        <div className="add">
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={newTeacher.name}
+            onChange={handleAddTeacher}
+          />
+          <input
+            type="text"
+            placeholder="City"
+            name="city"
+            value={newTeacher.city}
+            onChange={handleAddTeacher}
+          />
+          <button type="submit" onClick={addTeacher}>
+            Add
+          </button>
+        </div>
+        <div className="citis">
+          <label htmlFor="Berlin">
+            {" "}
+            Berlin
+            <input
+              name="Berlin"
+              type="checkbox"
+              ref={refCheckbox}
+              onChange={onChange}
+            />
+          </label>
+          <label htmlFor="Hamburg">
+            {" "}
+            Hamburg
+            <input
+              name="Hamburg"
+              type="checkbox"
+              ref={refCheckbox}
+              onChange={onChange}
+            />
+          </label>
+        </div>
+        <div className="teachers">
+          {teachers.map((teacher) => (
+            <div key={teacher.id} className="teacher">
+              <div className="item">{teacher.name}</div>
+              <div className="item">{teacher.city}</div>
+              <div className="icons">
+                <FaEdit className="icon" role="button" tabIndex="0" />
+                <FaTrashAlt
+                  className="icon"
+                  role="button"
+                  tabIndex="0"
+                  onClick={() => handleDelete(teacher.id)}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+       
       </div>
       <footer>
         <h2>

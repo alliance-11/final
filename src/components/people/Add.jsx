@@ -24,7 +24,7 @@ export const Add = ({ addTeacher }) => {
         required
         type="text"
         name="name"
-        placeholder="Teacher"
+        placeholder="Person"
         value={newTeacher.name}
         onChange={handleAddTeacher}
       />
