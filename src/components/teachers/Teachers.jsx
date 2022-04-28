@@ -17,12 +17,11 @@ export const Teachers = () => {
   const refCheckbox = useRef();
 
   const onChange = (e) => {
-
-    
     console.log(refCheckbox.current.checked); //  in "checked" steht drin, ob die Checkbox geklickt ist!
     // ODER: im event steht das aktuell (!) geklickte Item drin
     console.log(e.target.name, e.target.checked);
-    // setTeachers([...teachers, refCheckbox.current.checked])
+    const filteredTeachers = teachers.filter((teacher) => teacher.city===e.target.value)
+    setTeachers()
   };
 
   const addTeacher = () => {
@@ -71,7 +70,7 @@ export const Teachers = () => {
             {" "}
             Berlin
             <input
-              name="Berlin"
+              value="Berlin"
               type="checkbox"
               ref={refCheckbox}
               onChange={onChange}
@@ -81,7 +80,7 @@ export const Teachers = () => {
             {" "}
             Hamburg
             <input
-              name="Hamburg"
+              value="Hamburg"
               type="checkbox"
               ref={refCheckbox}
               onChange={onChange}
