@@ -4,9 +4,25 @@ import "./Teachers.scss";
 
 export const Teachers = () => {
 
+  const person = {
+    name: "Gael", age: 29
+  }
+
+  console.log( { ...person, age: 30 } )
+
+  const field = "age"
+  const value = 31 
+  // dynamic keys => update something in the object by VARIABLE
+  console.log( { ...person, [field]: value } ) // [field] => age => { ...person: age: 31 }
+
+
 
   // FILTER state => object => mit den Filter settings
-  const [cityFilter, setCityFilter] = useState([])
+  const [filter, setFilter] = useState({
+    Hamburg: false, Berlin: false
+  })
+
+
 
   const [teachers, setTeachers] = useState([
     { id: "1", name: "Rob", city: "Berlin" },
@@ -21,6 +37,9 @@ export const Teachers = () => {
 
   const refCheckbox = useRef();
 
+  console.log({ filter })
+
+
 
   // update SETTINGS 
   // we do FILTERING later...
@@ -30,24 +49,11 @@ export const Teachers = () => {
     console.log(e.target.name, e.target.checked);
 
     // toggle filter setting 
-    const cityName = e.target.value
-    const cityChecked = e.target.checked
+    setFilter({ ...filter, [e.target.value]: !filter[e.target.value] })
 
-    // checked or unchecked?
-    
-      // if checkbox for city checked => add city to cities array
-    if(cityChecked) {
-      setCityFilter([...cityFilter, cityName]) // this always ADDs a new item
-    }
-    // if checkbox for city UNchecked => remove from cities array
-    else {
-      const citiesNew = cityFilter.filter( city => city !== cityName )
-      setCityFilter( citiesNew )
-    }
-
+    // const filteredTeachers = teachers.filter((teacher) => teacher.city===e.target.value)
+    // setTeachers()
   };
-
-  console.log({ cityFilter })
 
   const addTeacher = () => {
     const addNewTeacher = {
@@ -71,16 +77,26 @@ export const Teachers = () => {
   let filteredTeachers = teachers
 
 
-  // only filter teachers if we have at least ONE city set
-  if( cityFilter.length ) {
-
-    // filter by cities
-    filteredTeachers = teachers.filter( teacher => {
-      return cityFilter.includes( teacher.city )
-    })
-
-  }
+  // doppelbett & strand
   
+  // filter HAMBURG cities
+  if( filter.Hamburg && filter.Berlin ) {
+    filteredTeachers = filteredTeachers.filter((teacher) => {
+      return teacher.city === "Hamburg" || teacher.city === "Berlin"
+    })
+  }
+  else if( filter.Hamburg ) {
+    filteredTeachers = filteredTeachers.filter( teacher => {
+      return teacher.city === "Hamburg" 
+    })
+  }
+  // filter BERLIN cities
+  else if( filter.Berlin) {
+    filteredTeachers = filteredTeachers.filter( teacher => {
+      return teacher.city === "Berlin"
+    })
+  }
+
   // RENDERING of data into HTML
   return (
     <div className="Teachers">
