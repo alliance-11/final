@@ -25,6 +25,12 @@ export const Nav = () => {
         Teachers
       </NavLink>
       <NavLink
+        to="/students"
+        className={(navData) => (navData.isActive ? "active" : "none")}
+      >
+        Students
+      </NavLink>
+      <NavLink
         to="/people"
         className={(navData) => (navData.isActive ? "active" : "none")}
       >
