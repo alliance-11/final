@@ -3,11 +3,8 @@ import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import "./Teachers.scss";
 
 export const Teachers = () => {
-
-  const [cityFilter, setCityFilter] = useState([])
-
   const [teachers, setTeachers] = useState([
-    { id: "1", name: "Rob", city: "Berlin" },
+    { id: "1", name: "Robert", city: "Berlin" },
     { id: "2", name: "Marlene", city: "Hamburg" },
     { id: "3", name: "Olaf ?", city: "Hamburg" },
     { id: "4", name: "Julian", city: "Berlin" },
@@ -18,6 +15,7 @@ export const Teachers = () => {
     name: "",
     city: "",
   });
+  const [cityFilter, setCityFilter] = useState([])
 
   const refCheckbox = useRef();
 
@@ -31,9 +29,7 @@ export const Teachers = () => {
       const citiesNew = cityFilter.filter( city => city !== cityName )
       setCityFilter( citiesNew )
     }
-
   };
-
   console.log({ cityFilter })
 
   const addTeacher = () => {
