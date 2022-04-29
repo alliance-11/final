@@ -4,25 +4,25 @@ import "./Students.scss";
 
 export const Students = () => {
   const [students, setStudents] = useState([
-    { id: "1", name: "Niko", specializ: "Full Stack" },
-    { id: "2", name: "Heba", specializ: "Full Stack" },
-    { id: "3", name: "Osama", specializ: "Backend" },
-    { id: "4", name: "Elisa", specializ: "Frontend" },
-    { id: "5", name: "Stephan", specializ: "Full Stack" },
+    { id: "1", name: "Niko", specialize: "Full Stack" },
+    { id: "2", name: "Heba", specialize: "Full Stack" },
+    { id: "3", name: "Osama", specialize: "Backend" },
+    { id: "4", name: "Elisa", specialize: "Frontend" },
+    { id: "5", name: "Stephan", specialize: "Full Stack" },
   ]);
   const [newStudent, setNewStudent] = useState({
     name: "",
-    specializ: "",
+    specialize: "",
   });
 
   const addStudent = () => {
     const addNewStudent = {
       id: Date.now().toString(),
       name: newStudent.name,
-      specializ: newStudent.specializ,
+      specialize: newStudent.specialize,
     };
     setStudents([...students, addNewStudent]);
-    setNewStudent({ ...newStudent, name: "", specializ: "" });
+    setNewStudent({ ...newStudent, name: "", specialize: "" });
   };
   const handleAddStudent = (e) => {
     setNewStudent({ ...newStudent, [e.target.name]: e.target.value });
@@ -32,6 +32,8 @@ export const Students = () => {
     const deleteItem = students.filter((student) => student.id !== id);
     setStudents(deleteItem);
   };
+
+
   return (
     <div className="Students">
       <div className="container">
@@ -46,20 +48,22 @@ export const Students = () => {
           />
           <input
             type="text"
-            name="specializ"
+            name="specialize"
             placeholder="Specializ"
-            value={newStudent.specializ}
+            value={newStudent.specialize}
             onChange={handleAddStudent}
           />
           <button type="submit" onClick={addStudent}>
             Add
           </button>
         </div>
+        <div className="search">
+        </div>
         <div className="students">
           {students.map((student) => (
             <div key={student.id} className="student">
               <div className="item">{student.name}</div>
-              <div className="item">{student.specializ}</div>
+              <div className="item">{student.specialize}</div>
               <div className="icons">
                 <FaEdit className="icon" role="button" tabIndex="0" />
                 <FaTrashAlt
@@ -74,7 +78,10 @@ export const Students = () => {
         </div>
       </div>
       <footer>
-        <h2>{students.length} List {students.length ===1 ? 'Student' : 'Students'}</h2>
+        <h2>
+          {students.length} List{" "}
+          {students.length === 1 ? "Student" : "Students"}
+        </h2>
       </footer>
     </div>
   );

@@ -42,8 +42,8 @@ export const People = () => {
       </div>
       <footer>
         <h2>
-          {teachers.length} List{" "}
-          {teachers.length === 1 ? "Teacher" : "Teachers"}
+          {handleSearch.length} List{" "}
+          {handleSearch.length === 1 ? "Teacher" : "Teachers"}
         </h2>
       </footer>
     </div>

@@ -85,7 +85,7 @@ export const Users = () => {
           </p>
         )}
       </div>
-      <Footer length={users.length} />
+      <Footer length={usersFiltered.length} />
     </div>
   );
 };
