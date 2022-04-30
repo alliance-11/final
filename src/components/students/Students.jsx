@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import "./Students.scss";
 
@@ -14,7 +14,18 @@ export const Students = () => {
     name: "",
     specialize: "",
   });
-
+  // FILTER
+  const [specFilter, setSpecFilter] = useState([]);
+  const refCheckBox = useRef();
+  const onChange = (e) => {
+    if (e.target.checked) {
+      setSpecFilter([...specFilter, e.target.value]);
+    } else {
+      const specNew = specFilter.filter(specialize =>specialize !== e.target.value);
+      setSpecFilter(specNew);
+    }
+  };
+  //ADD
   const addStudent = () => {
     const addNewStudent = {
       id: Date.now().toString(),
@@ -33,6 +44,11 @@ export const Students = () => {
     setStudents(deleteItem);
   };
 
+  // FILTER
+  let filteredStudents=students
+  if (specFilter.length){
+    filteredStudents = students.filter(student=>specFilter.includes(student.specialize))
+  }
 
   return (
     <div className="Students">
@@ -58,9 +74,30 @@ export const Students = () => {
           </button>
         </div>
         <div className="search">
+          <label htmlFor="Full Stack">
+            Full Stack
+            <input type="checkbox"
+            value="Full Stack"
+            ref={refCheckBox}
+            onChange={onChange}/>
+          </label>
+          <label htmlFor="Frontend">
+            Frontend
+            <input type="checkbox"
+            value="Frontend"
+            ref={refCheckBox}
+            onChange={onChange}/>
+          </label>
+          <label htmlFor="Backend">
+            Backend
+            <input type="checkbox"
+            value="Backend"
+            ref={refCheckBox}
+            onChange={onChange}/>
+          </label>
         </div>
         <div className="students">
-          {students.map((student) => (
+          {filteredStudents.map((student) => (
             <div key={student.id} className="student">
               <div className="item">{student.name}</div>
               <div className="item">{student.specialize}</div>
@@ -79,8 +116,8 @@ export const Students = () => {
       </div>
       <footer>
         <h2>
-          {students.length} List{" "}
-          {students.length === 1 ? "Student" : "Students"}
+          {filteredStudents.length} List{" "}
+          {filteredStudents.length === 1 ? "Student" : "Students"}
         </h2>
       </footer>
     </div>

@@ -3,8 +3,6 @@ import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import "./Teachers.scss";
 
 export const Teachers = () => {
-
-
   // FILTER state => object => mit den Filter settings
   const [cityFilter, setCityFilter] = useState([])
 
@@ -20,7 +18,6 @@ export const Teachers = () => {
   });
 
   const refCheckbox = useRef();
-
 
   // update SETTINGS 
   // we do FILTERING later...
