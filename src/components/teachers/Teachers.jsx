@@ -80,7 +80,7 @@ export const Teachers = () => {
           </button>
         </div>
         
-        <div className="citis">
+        <div className="filter">
           <label htmlFor="Berlin">
             {" "}
             Berlin

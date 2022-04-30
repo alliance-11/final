@@ -73,7 +73,7 @@ export const Students = () => {
             Add
           </button>
         </div>
-        <div className="search">
+        <div className="filter">
           <label htmlFor="Full Stack">
             Full Stack
             <input type="checkbox"
