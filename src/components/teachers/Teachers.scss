@@ -71,6 +71,7 @@
       .teacher {
         height: 2em;
         display: flex;
+        place-items: center;
         justify-content: space-around;
         border: 2px solid white;
         .item {
@@ -86,7 +87,6 @@
           font-size: 16px;
           text-align: center;
           padding-left: 5px;
-          //   border: 2px solid #ccc;
           border: none;
           // background-color: #e6e0e0;
           background-color: transparent;

@@ -30,7 +30,7 @@ export const DataProvider = (props) => {
     },
   ]);
   const [teachers, setTeachers] = useState([
-    { id: "1", name: "Robert", city: "Madrid" },
+    { id: "1", name: "Robert", city: "Berlin" },
     { id: "2", name: "Marlene", city: "Hamburg" },
     { id: "3", name: "Olaf", city: "Hamburg" },
     { id: "4", name: "Julian", city: "Berlin" },
