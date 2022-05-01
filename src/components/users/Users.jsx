@@ -59,7 +59,7 @@ export const Users = () => {
   };
 
   // apply given search filter to users array
-  const usersFiltered = users.filter(
+  const filteredStudents = users.filter(
     (user) =>
       user.name.toLowerCase().includes(search.toLowerCase()) || // ONE criteria
       user.hobby.toLowerCase().includes(search.toLowerCase()) ||
@@ -75,7 +75,7 @@ export const Users = () => {
         <AddForm addUser={addUser} />
         {users.length ? (
           <UsersList
-            users={usersFiltered}
+            users={filteredStudents}
             handleDelete={handleDelete}
             editUser={editUser}
           />
@@ -85,7 +85,7 @@ export const Users = () => {
           </p>
         )}
       </div>
-      <Footer length={usersFiltered.length} />
+      <Footer length={filteredStudents.length} />
     </div>
   );
 };
