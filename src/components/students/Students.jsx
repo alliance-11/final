@@ -60,7 +60,7 @@ export const Students = () => {
           <input
             type="text"
             name="specialize"
-            placeholder="Specializ"
+            placeholder="Specialize"
             value={newStudent.specialize}
             onChange={handleAddStudent}
           />
