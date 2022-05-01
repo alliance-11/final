@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 
 export const TeacherItem = ({teacher, handleDelete}) => {

@@ -1,31 +1,31 @@
 import { useContext, useRef, useState } from "react";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Context } from "../context/DataProvider";
 import { AddForm } from "./AddForm";
 import "./Teachers.scss";
+import { TeachersList } from "./TeachersList";
 
 export const Teachers = () => {
-  const {teachers, setTeachers}=useContext(Context)
-  const [cityFilter, setCityFilter] = useState([])
+  const { teachers, setTeachers } = useContext(Context);
+  const [cityFilter, setCityFilter] = useState([]);
 
   const refCheckbox = useRef();
 
   const onChange = (e) => {
-    const cityName = e.target.value
-    const cityChecked = e.target.checked
-    if(cityChecked) {
-      setCityFilter([...cityFilter, cityName]) // this always ADDs a new item
-    }
-    else {
-      const citiesNew = cityFilter.filter( city => city !== cityName )
-      setCityFilter( citiesNew )
+    const cityName = e.target.value;
+    const cityChecked = e.target.checked;
+    if (cityChecked) {
+      setCityFilter([...cityFilter, cityName]); // this always ADDs a new item
+    } else {
+      const citiesNew = cityFilter.filter((city) => city !== cityName);
+      setCityFilter(citiesNew);
     }
   };
-  console.log({ cityFilter })
+  console.log({ cityFilter });
 
   const addTeacher = (teacherNew) => {
     const addNewTeacher = {
-      id: Date.now().toString(),...teacherNew
+      id: Date.now().toString(),
+      ...teacherNew,
     };
     setTeachers([...teachers, addNewTeacher]);
   };
@@ -35,17 +35,19 @@ export const Teachers = () => {
     setTeachers(deleteTeacher);
   };
 
-  let filteredTeachers = teachers
-  if( cityFilter.length ) {
-    filteredTeachers = teachers.filter( teacher => cityFilter.includes( teacher.city ))
-}
-  
+  let filteredTeachers = teachers;
+  if (cityFilter.length) {
+    filteredTeachers = teachers.filter((teacher) =>
+      cityFilter.includes(teacher.city)
+    );
+  }
+
   // RENDERING of data into HTML
   return (
     <div className="Teachers">
       <h2>Teachers</h2>
       <div className="container">
-        <AddForm addTeacher={addTeacher}/>
+        <AddForm addTeacher={addTeacher} />
         <div className="filter">
           <label htmlFor="Berlin">
             {" "}
@@ -78,23 +80,7 @@ export const Teachers = () => {
             />
           </label>
         </div>
-        <div className="teachers">
-      {filteredTeachers.map((teacher) => (
-    <div key={teacher.id}className="teacher">
-    <div className="item">{teacher.name}</div>
-    <div className="item">{teacher.city}</div>
-    <div className="icons">
-      <FaEdit className="icon" role="button" tabIndex="0" />
-      <FaTrashAlt
-        className="icon"
-        role="button"
-        tabIndex="0"
-        onClick={() => handleDelete(teacher.id)}
-      />
-    </div>
-  </div>
-      ))}
-    </div>
+        <TeachersList teachers={teachers} filteredTeachers={filteredTeachers} handleDelete={handleDelete} />
       </div>
       <footer>
         <h2>
