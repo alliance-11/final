@@ -78,6 +78,20 @@
           place-items: center;
           width: 40%;
         }
+        input {
+          color: grey;
+          width: 30%;
+          height: 1.4em;
+          border-radius: 4px;
+          font-size: 16px;
+          text-align: center;
+          padding-left: 5px;
+          //   border: 2px solid #ccc;
+          border: none;
+          // background-color: #e6e0e0;
+          background-color: transparent;
+        }
+
         .icons {
           // right: 0;
           font-size: 1rem;

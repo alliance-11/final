@@ -30,6 +30,14 @@ export const Teachers = () => {
     setTeachers([...teachers, addNewTeacher]);
   };
 
+  //Edit
+  const editTeacher = (id, teacherData) => {
+    const updateTeacher = teachers.map((teacher) =>
+      teacher.id === id ? { ...teacher, teacherData } : teacher
+    );
+    setTeachers(updateTeacher);
+  };
+
   const handleDelete = (id) => {
     const deleteTeacher = teachers.filter((teacher) => teacher.id !== id);
     setTeachers(deleteTeacher);
@@ -80,7 +88,12 @@ export const Teachers = () => {
             />
           </label>
         </div>
-        <TeachersList teachers={teachers} filteredTeachers={filteredTeachers} handleDelete={handleDelete} />
+        <TeachersList
+          editTeacher={editTeacher}
+          teachers={teachers}
+          filteredTeachers={filteredTeachers}
+          handleDelete={handleDelete}
+        />
       </div>
       <footer>
         <h2>
