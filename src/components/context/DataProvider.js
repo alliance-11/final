@@ -12,7 +12,7 @@ export const DataProvider = (props) => {
       email: "gael@gmail.com",
       city: "Berlin",
     },
-    {
+    { 
       id: "2",
       name: "Robert",
       profession: "Web Dev Trainer",

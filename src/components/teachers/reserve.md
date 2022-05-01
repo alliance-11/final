@@ -1,11 +1,14 @@
 import { useContext, useRef, useState } from "react";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import { Context } from "../context/DataProvider";
-import { AddForm } from "./AddForm";
 import "./Teachers.scss";
 
 export const Teachers = () => {
   const {teachers, setTeachers}=useContext(Context)
+  const [newTeacher, setNewTeacher] = useState({
+    name: "",
+    city: "",
+  });
   const [cityFilter, setCityFilter] = useState([])
 
   const refCheckbox = useRef();
@@ -23,11 +26,17 @@ export const Teachers = () => {
   };
   console.log({ cityFilter })
 
-  const addTeacher = (teacherNew) => {
+  const addTeacher = () => {
     const addNewTeacher = {
-      id: Date.now().toString(),...teacherNew
+      id: Date.now().toString(),
+      name: newTeacher.name,
+      city: newTeacher.city,
     };
     setTeachers([...teachers, addNewTeacher]);
+    setNewTeacher({ ...newTeacher, name: "", city: "" });
+  };
+  const handleAddTeacher = (e) => {
+    setNewTeacher({ ...newTeacher, [e.target.name]: e.target.value });
   };
 
   const handleDelete = (id) => {
@@ -45,7 +54,26 @@ export const Teachers = () => {
     <div className="Teachers">
       <h2>Teachers</h2>
       <div className="container">
-        <AddForm addTeacher={addTeacher}/>
+        <div className="add">
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={newTeacher.name}
+            onChange={handleAddTeacher}
+          />
+          <input
+            type="text"
+            placeholder="City"
+            name="city"
+            value={newTeacher.city}
+            onChange={handleAddTeacher}
+          />
+          <button type="submit" onClick={addTeacher}>
+            Add
+          </button>
+        </div>
+        
         <div className="filter">
           <label htmlFor="Berlin">
             {" "}
