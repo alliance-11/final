@@ -1,0 +1,8 @@
+[
+    { "id": "1", "name": "Niko", "specialize": "Full Stack" },
+    { "id": "2", "name": "Heba", "specialize": "Full Stack" },
+    { "id": "3", "name": "Osama", "specialize": "Backend" },
+    { "id": "4", "name": "Elisa", "specialize": "Frontend" },
+    { "id": "5", "name": "Stephan", "specialize": "Full Stack" }
+
+]
