@@ -1,15 +1,10 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { Context } from "../context/DataProvider";
 import "./Students.scss";
 
 export const Students = () => {
-  const [students, setStudents] = useState([
-    { id: "1", name: "Niko", specialize: "Full Stack" },
-    { id: "2", name: "Heba", specialize: "Full Stack" },
-    { id: "3", name: "Osama", specialize: "Backend" },
-    { id: "4", name: "Elisa", specialize: "Frontend" },
-    { id: "5", name: "Stephan", specialize: "Full Stack" },
-  ]);
+  const { students,setStudents}=useContext(Context)
   const [newStudent, setNewStudent] = useState({
     name: "",
     specialize: "",

@@ -1,39 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Users.scss";
 import { AddForm } from "./AddForm";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { UsersList } from "./UsersList";
 import { Search } from "./Search";
+import { Context } from "../context/DataProvider";
 
 export const Users = () => {
-  const [users, setUsers] = useState([
-    {
-      id: "1",
-      name: "Gael",
-      profession: "Web Dev Consultant",
-      hobby: "playing computer games",
-      email: "gael@gmail.com",
-      city: "Berlin",
-    },
-    {
-      id: "2",
-      name: "Robert",
-      profession: "Web Dev Trainer",
-      hobby: "reading",
-      email: "robert@gmail.com",
-      city: "Berlin",
-    },
-    {
-      id: "3",
-      name: "Elisa",
-      profession: "JavaScript Engineer",
-      hobby: "JavaScript",
-      email: "elisa@gmail.com",
-      city: "Hamburg",
-    },
-  ]);
   const [search, setSearch] = useState("");
+  const {users, setUsers} =useContext(Context)
 
   //Add
   const addUser = (userNew) => {

@@ -1,16 +1,10 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { Context } from "../context/DataProvider";
 import "./Teachers.scss";
 
 export const Teachers = () => {
-  const [teachers, setTeachers] = useState([
-    { id: "1", name: "Robert", city: "Berlin" },
-    { id: "2", name: "Marlene", city: "Hamburg" },
-    { id: "3", name: "Olaf ?", city: "Hamburg" },
-    { id: "4", name: "Julian", city: "Berlin" },
-    { id: "5", name: "Heiko", city: "Hamburg" },
-    { id: "6", name: "Gael", city: "Berlin" },
-  ]);
+  const {teachers, setTeachers}=useContext(Context)
   const [newTeacher, setNewTeacher] = useState({
     name: "",
     city: "",
