@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Context } from "../context/DataProvider";
 import { AddForm } from "./AddForm";
 import "./Teachers.scss";
@@ -79,23 +79,22 @@ export const Teachers = () => {
           </label>
         </div>
         <div className="teachers">
-          {filteredTeachers.map((teacher) => (
-            <div key={teacher.id} className="teacher">
-              <div className="item">{teacher.name}</div>
-              <div className="item">{teacher.city}</div>
-              <div className="icons">
-                <FaEdit className="icon" role="button" tabIndex="0" />
-                <FaTrashAlt
-                  className="icon"
-                  role="button"
-                  tabIndex="0"
-                  onClick={() => handleDelete(teacher.id)}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-       
+      {filteredTeachers.map((teacher) => (
+    <div key={teacher.id}className="teacher">
+    <div className="item">{teacher.name}</div>
+    <div className="item">{teacher.city}</div>
+    <div className="icons">
+      <FaEdit className="icon" role="button" tabIndex="0" />
+      <FaTrashAlt
+        className="icon"
+        role="button"
+        tabIndex="0"
+        onClick={() => handleDelete(teacher.id)}
+      />
+    </div>
+  </div>
+      ))}
+    </div>
       </div>
       <footer>
         <h2>
