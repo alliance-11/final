@@ -5,7 +5,7 @@ import "./Teachers.scss";
 import { TeachersList } from "./TeachersList";
 
 export const Teachers = () => {
-  const { teachers, setTeachers } = useContext(Context);
+  const { teachers } = useContext(Context);
   const [cityFilter, setCityFilter] = useState([]);
 
   const refCheckbox = useRef();
@@ -22,27 +22,6 @@ export const Teachers = () => {
   };
   console.log({ cityFilter });
 
-  const addTeacher = (teacherNew) => {
-    const addNewTeacher = {
-      id: Date.now().toString(),
-      ...teacherNew,
-    };
-    setTeachers([...teachers, addNewTeacher]);
-  };
-
-  //Edit
-  const editTeacher = (id, teacherData) => {
-    const updateTeacher = teachers.map((teacher) =>
-      teacher.id === id ? { ...teacher, teacherData } : teacher
-    );
-    setTeachers(updateTeacher);
-  };
-
-  const handleDelete = (id) => {
-    const deleteTeacher = teachers.filter((teacher) => teacher.id !== id);
-    setTeachers(deleteTeacher);
-  };
-
   let filteredTeachers = teachers;
   if (cityFilter.length) {
     filteredTeachers = teachers.filter((teacher) =>
@@ -55,7 +34,7 @@ export const Teachers = () => {
     <div className="Teachers">
       <h2>Teachers</h2>
       <div className="container">
-        <AddForm addTeacher={addTeacher} />
+        <AddForm />
         <div className="filter">
           <label htmlFor="Berlin">
             {" "}
@@ -89,10 +68,8 @@ export const Teachers = () => {
           </label>
         </div>
         <TeachersList
-          editTeacher={editTeacher}
           teachers={teachers}
           filteredTeachers={filteredTeachers}
-          handleDelete={handleDelete}
         />
       </div>
       <footer>

@@ -1,10 +1,7 @@
 import { TeacherItem } from "./TeacherItem";
 
 export const TeachersList = ({
-  teacher,
   filteredTeachers,
-  handleDelete,
-  editTeacher,
 }) => {
   return (
     <div className="teachers">
@@ -12,8 +9,6 @@ export const TeachersList = ({
         <TeacherItem
           key={teacher.id}
           teacher={teacher}
-          handleDelete={handleDelete}
-          editTeacher={editTeacher}
         />
       ))}
     </div>

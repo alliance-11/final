@@ -44,6 +44,25 @@ export const DataProvider = (props) => {
     { id: "4", name: "Elisa", specialize: "Frontend" },
     { id: "5", name: "Stephan", specialize: "Full Stack" },
   ]);
+  const addTeacher = (teacherNew) => {
+    const addNewTeacher = {
+      id: Date.now().toString(),
+      ...teacherNew,
+    };
+    setTeachers([...teachers, addNewTeacher]);
+  };
+
+  const editTeacher = (id, teacherData) => {
+    const updateTeacher = teachers.map((teacher) =>
+      teacher.id === id ? { ...teacher, ...teacherData } : teacher
+    );
+    setTeachers(updateTeacher);
+  };
+  const deleteTeacher = (id) => {
+    const deleteTeacher = teachers.filter((teacher) => teacher.id !== id);
+    setTeachers(deleteTeacher);
+  };
+
 
   const sharedData = {
     users,
@@ -52,7 +71,11 @@ export const DataProvider = (props) => {
     setUsers,
     setTeachers,
     setStudents,
+    addTeacher,
+    editTeacher,
+    deleteTeacher,
   };
+
   return (
     <Context.Provider value={sharedData}>{props.children}</Context.Provider>
   );

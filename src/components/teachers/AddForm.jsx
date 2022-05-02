@@ -1,6 +1,8 @@
-import { useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
+import { Context } from '../context/DataProvider';
 
-export const AddForm = ({addTeacher}) => {
+export const AddForm = () => {
+  const {addTeacher}=useContext(Context)
     const [newTeacher, setNewTeacher] = useState({
         name: "",
         city: "",

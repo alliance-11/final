@@ -1,7 +1,9 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { Context } from "../context/DataProvider";
 
-export const TeacherItem = ({ teacher, handleDelete, editTeacher }) => {
+export const TeacherItem = ({ teacher }) => {
+  const {editTeacher, deleteTeacher}=useContext(Context)
   const inputName = useRef();
   const inputCity = useRef();
 
@@ -45,7 +47,7 @@ export const TeacherItem = ({ teacher, handleDelete, editTeacher }) => {
           className="icon"
           role="button"
           tabIndex="0"
-          onClick={() => handleDelete(teacher.id)}
+          onClick={() => deleteTeacher(teacher.id)}
         />
       </div>
     </div>
