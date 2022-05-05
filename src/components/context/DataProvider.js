@@ -63,7 +63,6 @@ export const DataProvider = (props) => {
     setTeachers(deleteTeacher);
   };
 
-
   const sharedData = {
     users,
     teachers,
