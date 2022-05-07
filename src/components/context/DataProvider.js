@@ -38,11 +38,11 @@ export const DataProvider = (props) => {
     { id: "6", name: "Gael", city: "Berlin" },
   ]);
   const [students, setStudents] = useState([
-    { id: "1", name: "Niko", specialize: "Full Stack" },
-    { id: "2", name: "Heba", specialize: "Full Stack" },
-    { id: "3", name: "Osama", specialize: "Backend" },
-    { id: "4", name: "Elisa", specialize: "Frontend" },
-    { id: "5", name: "Stephan", specialize: "Full Stack" },
+    { id: "1", name: "Niko", specialization: "Full Stack" },
+    { id: "2", name: "Heba", specialization: "Full Stack" },
+    { id: "3", name: "Osama", specialization: "Backend" },
+    { id: "4", name: "Elisa", specialization: "Frontend" },
+    { id: "5", name: "Stephan", specialization: "Full Stack" },
   ]);
   const addTeacher = (teacherNew) => {
     const addNewTeacher = {

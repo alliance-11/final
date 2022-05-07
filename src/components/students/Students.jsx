@@ -7,7 +7,7 @@ export const Students = () => {
   const { students,setStudents}=useContext(Context)
   const [newStudent, setNewStudent] = useState({
     name: "",
-    specialize: "",
+    specialization: "",
   });
   // FILTER
   const [specFilter, setSpecFilter] = useState([]);
@@ -16,7 +16,7 @@ export const Students = () => {
     if (e.target.checked) {
       setSpecFilter([...specFilter, e.target.value]);
     } else {
-      const specNew = specFilter.filter(specialize =>specialize !== e.target.value);
+      const specNew = specFilter.filter(specialization =>specialization !== e.target.value);
       setSpecFilter(specNew);
     }
   };
@@ -25,10 +25,10 @@ export const Students = () => {
     const addNewStudent = {
       id: Date.now().toString(),
       name: newStudent.name,
-      specialize: newStudent.specialize,
+      specialization: newStudent.specialization,
     };
     setStudents([...students, addNewStudent]);
-    setNewStudent({ ...newStudent, name: "", specialize: "" });
+    setNewStudent({ ...newStudent, name: "", specialization: "" });
   };
   const handleAddStudent = (e) => {
     setNewStudent({ ...newStudent, [e.target.name]: e.target.value });
@@ -42,7 +42,7 @@ export const Students = () => {
   // FILTER
   let filteredStudents=students
   if (specFilter.length){
-    filteredStudents = students.filter(student=>specFilter.includes(student.specialize))
+    filteredStudents = students.filter(student=>specFilter.includes(student.specialization))
   }
 
   return (
@@ -59,9 +59,9 @@ export const Students = () => {
           />
           <input
             type="text"
-            name="specialize"
-            placeholder="Specialize"
-            value={newStudent.specialize}
+            name="specialization"
+            placeholder="Specialization"
+            value={newStudent.specialization}
             onChange={handleAddStudent}
           />
           <button type="submit" onClick={addStudent}>
@@ -95,7 +95,7 @@ export const Students = () => {
           {filteredStudents.map((student) => (
             <div key={student.id} className="student">
               <div className="item">{student.name}</div>
-              <div className="item">{student.specialize}</div>
+              <div className="item">{student.specialization}</div>
               <div className="icons">
                 <FaEdit className="icon" role="button" tabIndex="0" />
                 <FaTrashAlt
