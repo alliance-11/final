@@ -14,7 +14,7 @@ export const TeacherItem = ({ teacher }) => {
       const nameNew = inputName.current.value;
       const cityNew = inputCity.current.value;
       setEditMode(false);
-      editTeacher(teacher.id, { name: nameNew, city: cityNew });
+      editTeacher(teacher._id, { name: nameNew, city: cityNew });
     }
   };
 
@@ -47,7 +47,7 @@ export const TeacherItem = ({ teacher }) => {
           className="icon"
           role="button"
           tabIndex="0"
-          onClick={() => deleteTeacher(teacher.id)}
+          onClick={() => deleteTeacher(teacher._id)}
         />
       </div>
     </div>
