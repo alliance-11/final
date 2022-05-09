@@ -23,14 +23,14 @@ export const Users = () => {
   //Edit
   const editUser = (id, userData) => {
     const updateUser = users.map((user) =>
-      user.id === id ? { ...user, userData } : user
+      user._id === id ? { ...user, ...userData } : user
     );
     setUsers(updateUser);
   };
 
   //Delete
   const handleDelete = (id) => {
-    const deleteUser = users.filter((user) => user.id !== id);
+    const deleteUser = users.filter((user) => user._id !== id);
     setUsers(deleteUser);
   };
 

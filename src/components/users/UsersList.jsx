@@ -5,7 +5,7 @@ export const UsersList = ({ users, handleDelete, editUser }) => {
     <div className="users">
       {users.map((user) => (
         <UserItem
-          key={user.id}
+          key={user._id}
           user={user}
           handleDelete={handleDelete}
           editUser={editUser}

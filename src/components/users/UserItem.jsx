@@ -18,7 +18,7 @@ export const UserItem = ({ user, handleDelete, editUser }) => {
 
       // toggle edit mode
       setEditMode( false ); // disable EDIT mode => set it to false
-      editUser(user.id, { name: nameNew, hobby: hobbyNew, city: cityNew });
+      editUser(user._id, { name: nameNew, hobby: hobbyNew, city: cityNew });
     }
   };
 
@@ -60,7 +60,7 @@ export const UserItem = ({ user, handleDelete, editUser }) => {
           className="icon"
           role="button"
           tabIndex="0"
-          onClick={() => handleDelete(user.id)}
+          onClick={() => handleDelete(user._id)}
         />
       </div>
       
