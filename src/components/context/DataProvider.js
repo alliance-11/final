@@ -13,7 +13,6 @@ export const DataProvider = (props) => {
     // fetchData fetches ALL initial data we need for our app
     const fetchData = async () => {
       // LOAD USERS
-
       // fetch from API url
       // important: React does not CHECK changes on .env file
       // so in case you change contents in that file => restart React
@@ -30,6 +29,11 @@ export const DataProvider = (props) => {
       setTeachers(teachersApi); // fill teachers into state and update DOM
 
       // TODO: LOAD STUDENTS...
+      //load STUDENTS
+      response = await fetch(`${process.env.REACT_APP_API_URL}/students`)
+      const studentsApi=await response.json();
+      console.log(studentsApi);
+      setStudents(studentsApi)
     };
     fetchData();
   }, []); // just run it ONCE after first render
@@ -60,7 +64,6 @@ export const DataProvider = (props) => {
       city: "Hamburg",
     },
   ]);
-
   const [teachers, setTeachers] = useState([
     { _id: "1", name: "Robert", city: "Berlin" },
     { _id: "2", name: "Marlene", city: "Hamburg" },
@@ -96,14 +99,6 @@ export const DataProvider = (props) => {
     setTeachers([...teachers, teacherNewApi]);
   };
 
-  const addStudent = (studentNew) => {
-    const addNewStudent = {
-      id: Date.now().toString(),
-      ...studentNew,
-    };
-    setStudents([...students, addNewStudent]);
-  };
-
   const editTeacher = async (id, teacherData) => {
     // update teacher at API
     await fetch(`${process.env.REACT_APP_API_URL}/teachers/${id}`, {
@@ -121,13 +116,6 @@ export const DataProvider = (props) => {
     setTeachers(updateTeacher);
   };
 
-  const editStudent = (id, studentData) => {
-    const updateStudent = students.map((student) =>
-      student._id === id ? { ...student, studentData } : student
-    );
-    setStudents(updateStudent);
-  };
-
   const deleteTeacher = async (id) => {
     // 1. delete at API
     // 2. if successful => we delete also in frontend STATE
@@ -141,10 +129,62 @@ export const DataProvider = (props) => {
     setTeachers(deleteTeacher);
   };
 
-  const deleteStudent = (id) => {
+  const addStudent = async (studentNew) => {
+console.log(studentNew);
+
+const response = await fetch(`${process.env.REACT_APP_API_URL}/students`, {
+  method: 'POST',
+  body: JSON.stringify(studentNew),
+  headers: {"Content-Type": 'application/json',},
+})
+const studentNewApi= await response.json();
+console.log(studentNewApi);
+
+    setStudents([...students, studentNewApi]);
+  };
+  // const addStudent = (studentNew) => {
+  //   const addNewStudent = {
+  //     id: Date.now().toString(),
+  //     ...studentNew,
+  //   };
+  //   setStudents([...students, addNewStudent]);
+  // };
+
+  const editStudent = async (id, studentData) => {
+    await fetch(`${process.env.REACT_APP_API_URL}/students/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(studentData),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+
+
+    const updateStudent = students.map((student) =>
+      student._id === id ? { ...student, studentData } : student
+    );
+    setStudents(updateStudent);
+  };
+  // const editStudent = (id, studentData) => {
+  //   const updateStudent = students.map((student) =>
+  //     student._id === id ? { ...student, studentData } : student
+  //   );
+  //   setStudents(updateStudent);
+  // };
+
+  const deleteStudent = async (id) => {
+
+await fetch(`${process.env.REACT_APP_API_URL}/students/${id}`, { 
+  method: "DELETE",
+})
+
     const deleteItem = students.filter((student) => student._id !== id);
     setStudents(deleteItem);
   };
+  // const deleteStudent = (id) => {
+  //   const deleteItem = students.filter((student) => student._id !== id);
+  //   setStudents(deleteItem);
+  // };
 
   const sharedData = {
     users,
