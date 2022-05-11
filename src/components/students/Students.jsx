@@ -35,7 +35,7 @@ export const Students = () => {
   };
 
   const handleDelete = (id) => {
-    const deleteItem = students.filter((student) => student.id !== id);
+    const deleteItem = students.filter((student) => student._id !== id);
     setStudents(deleteItem);
   };
 
@@ -48,7 +48,11 @@ export const Students = () => {
   return (
     <div className="Students">
       <div className="container">
-        <h2>Students</h2>
+        <h2>
+          {filteredStudents.length} List{" "}
+          {filteredStudents.length === 1 ? "Student" : "Students"}
+        </h2>
+
         <div className="add">
           <input
             type="text"
@@ -93,13 +97,13 @@ export const Students = () => {
         </div>
         <div className="students">
           {filteredStudents.map((student) => (
-            <div key={student.id} className="student">
+            <div key={student._id} className="student">
               <div className="item">{student.name}</div>
               <div className="item">{student.specialization}</div>
               <div className="icons">
                 <FaEdit className="icon" role="button" tabIndex="0" />
                 <FaTrashAlt
-                  onClick={() => handleDelete(student.id)}
+                  onClick={() => handleDelete(student._id)}
                   className="icon"
                   role="button"
                   tabIndex="0"
@@ -109,12 +113,6 @@ export const Students = () => {
           ))}
         </div>
       </div>
-      <footer>
-        <h2>
-          {filteredStudents.length} List{" "}
-          {filteredStudents.length === 1 ? "Student" : "Students"}
-        </h2>
-      </footer>
     </div>
   );
 };

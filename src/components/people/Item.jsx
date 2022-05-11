@@ -9,7 +9,7 @@ export const Item = ({ teacher, handleDelete }) => {
       <div className="icons">
         <FaEdit className="icon" role="button" tabIndex="0" />
         <FaTrashAlt
-          onClick={() => handleDelete(teacher.id)}
+          onClick={() => handleDelete(teacher._id)}
           className="icon"
           role="button"
           tabIndex="0"

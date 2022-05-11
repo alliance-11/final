@@ -74,11 +74,11 @@ export const DataProvider = (props) => {
     { _id: "6", name: "Gael", city: "Berlin" },
   ])
   const [students, setStudents] = useState([
-    { id: "1", name: "Niko", specialization: "Full Stack" },
-    { id: "2", name: "Heba", specialization: "Full Stack" },
-    { id: "3", name: "Osama", specialization: "Backend" },
-    { id: "4", name: "Elisa", specialization: "Frontend" },
-    { id: "5", name: "Stephan", specialization: "Full Stack" },
+    { _id: "1", name: "Niko", specialization: "Full Stack" },
+    { _id: "2", name: "Heba", specialization: "Full Stack" },
+    { _id: "3", name: "Osama", specialization: "Backend" },
+    { _id: "4", name: "Elisa", specialization: "Frontend" },
+    { _id: "5", name: "Stephan", specialization: "Full Stack" },
   ])
 
   // 1. add data to API first !

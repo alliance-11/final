@@ -6,11 +6,11 @@ import { Search } from "./Search";
 import "./People.scss";
 export const People = () => {
   const [teachers, setTeachers] = useState([
-    { id: "1", name: "Rob", city: "Berlin" },
-    { id: "2", name: "Marlene", city: "Hamburg" },
-    { id: "3", name: "Olaf ?", city: "Hamburg" },
-    { id: "4", name: "Julian", city: "Berlin" },
-    { id: "5", name: "Heiko", city: "München"},
+    { _id: "1", name: "Rob", city: "Berlin" },
+    { _id: "2", name: "Marlene", city: "Hamburg" },
+    { _id: "3", name: "Olaf ?", city: "Hamburg" },
+    { _id: "4", name: "Julian", city: "Berlin" },
+    { _id: "5", name: "Heiko", city: "München" },
   ]);
   const [search, setSearch] = useState("");
 
@@ -23,7 +23,7 @@ export const People = () => {
   };
 
   const handleDelete = (id) => {
-    const deleteItem = teachers.filter((teacher) => teacher.id !== id);
+    const deleteItem = teachers.filter((teacher) => teacher._id !== id);
     setTeachers(deleteItem);
   };
   const handleSearch = teachers.filter(
@@ -34,18 +34,15 @@ export const People = () => {
 
   return (
     <div className="People">
+      <h2>
+        {handleSearch.length} List{" "}
+        {handleSearch.length === 1 ? "Teacher" : "Teachers"}
+      </h2>
       <div className="container">
-        <h2>People</h2>
         <Add addTeacher={addTeacher} />
         <Search search={search} setSearch={setSearch} />
         <List handleDelete={handleDelete} teachers={handleSearch} />
       </div>
-      <footer>
-        <h2>
-          {handleSearch.length} List{" "}
-          {handleSearch.length === 1 ? "Teacher" : "Teachers"}
-        </h2>
-      </footer>
     </div>
   );
 };
