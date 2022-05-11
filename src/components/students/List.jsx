@@ -1,7 +1,11 @@
-import React from 'react'
+import { Item } from "./Item";
 
-export const List = () => {
+export const List = ({ filteredStudents }) => {
   return (
-    <div>List</div>
-  )
-}
+    <div className="students">
+      {filteredStudents.map((student) => (
+        <Item key={student._id} student={student} />
+      ))}
+    </div>
+  );
+};
