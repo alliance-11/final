@@ -109,20 +109,4 @@
       }
     }
   }
-  footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: grid;
-    place-items: center;
-    border-top: 3px solid #ccc;
-    height: 10vh;
-    // background-color: #e6e0e0;
-    background-color: #c9c2c2;
-    color: rgb(99, 99, 99);
-    h2 {
-      margin: 0;
-    }
-  }
 }

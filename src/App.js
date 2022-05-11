@@ -17,7 +17,6 @@ function App() {
       <div className="App">
         <Nav />
         <Routes>
-          {/* <Route path="/" element={<Users />} /> */}
           <Route index element={<Users />} />
           <Route path="login" element={<Login />} />
           <Route path="teachers" element={<Teachers />} />

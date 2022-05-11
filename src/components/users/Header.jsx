@@ -1,9 +1,11 @@
 import React from "react";
 
-export const Header = ({ title }) => {
+export const Header = ({ length }) => {
   return (
     <header>
-      <h1>{title}</h1>
+      <h2>
+      {length} List {length === 1 ? "User ✨" : "Users ✨"}
+      </h2>
     </header>
   );
 };

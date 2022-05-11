@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import "./Users.scss";
 import { AddForm } from "./AddForm";
-import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { UsersList } from "./UsersList";
 import { Search } from "./Search";
@@ -45,7 +44,7 @@ export const Users = () => {
   // LAYOUT
   return (
     <div className="Users">
-      <Header title="Final Project " />
+      <Header length={filteredStudents.length} />
       <div className="container">
         <Search search={search} setSearch={setSearch} />
         <AddForm addUser={addUser} />
@@ -61,7 +60,6 @@ export const Users = () => {
           </p>
         )}
       </div>
-      <Footer length={filteredStudents.length} />
     </div>
   );
 };

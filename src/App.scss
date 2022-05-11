@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f2e9e9;
 }
 
 code {
@@ -19,22 +20,4 @@ code {
   width: 100%;
   display: column;
   place-items: center;
-  background-color: #f2e9e9;
-
-  // .links {
-  //   // width: 100%;
-  //   height: 8vh;
-  //   display: flex;
-  //   justify-content: space-around;
-  //   font-size: 18px;
-  //   align-items: center;
-  //   a {
-  //     text-decoration: none;
-  //     color: grey;
-  //   }
-
-  //   a.active {
-  //     color: rgb(218, 59, 59);
-  //   }
-  // }
 }
