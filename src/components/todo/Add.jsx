@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 
 export const Add = ({ addTodo }) => {
   const [newTodo, setNewTodo] = useState({
-    name: "",
+    todo: "",
     description: "",
   });
   const inputRef = useRef();

@@ -12,7 +12,7 @@ export const Todo = () => {
 
   const addTodo = (newTodo) => {
     const addNewTodo = {
-      id: Date.now().toString(),
+      _id: Date.now().toString(),
       ...newTodo,
     };
     setTodos([...todos, addNewTodo]);
