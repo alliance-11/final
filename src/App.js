@@ -3,7 +3,7 @@ import { Nav } from "./components/layout/Nav";
 import { Users } from "./components/users/Users";
 import { Login } from "./components/login/Login";
 import { Teachers } from "./components/teachers/Teachers";
-import { People } from "./components/people/People";
+import { Todo } from "./components/todo/Todo";
 import { Students } from "./components/students/Students";
 import "./App.scss";
 import { createContext } from "react";
@@ -20,7 +20,7 @@ function App() {
           <Route index element={<Users />} />
           <Route path="login" element={<Login />} />
           <Route path="teachers" element={<Teachers />} />
-          <Route path="people" element={<People />} />
+          <Route path="todo" element={<Todo />} />
           <Route path="students" element={<Students />} />
         </Routes>
       </div>

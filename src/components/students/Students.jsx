@@ -31,11 +31,11 @@ console.log({specFilter});
 
   return (
     <div className="Students">
-      <div className="container">
         <h2>
           {filteredStudents.length} List{" "}
           {filteredStudents.length === 1 ? "Student" : "Students"}
         </h2>
+      <div className="container">
         <Add />
         <div className="filter">
           <label htmlFor="Full Stack">

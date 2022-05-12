@@ -15,14 +15,10 @@ export const Teachers = () => {
   // dynamic keys => update something in the object by VARIABLE
   console.log( { ...person, [field]: value } ) // [field] => age => { ...person: age: 31 }
 
-
-
   // FILTER state => object => mit den Filter settings
   const [filter, setFilter] = useState({
     Hamburg: false, Berlin: false
   })
-
-
 
   const [teachers, setTeachers] = useState([
     { id: "1", name: "Rob", city: "Berlin" },
@@ -36,10 +32,7 @@ export const Teachers = () => {
   });
 
   const refCheckbox = useRef();
-
   console.log({ filter })
-
-
 
   // update SETTINGS 
   // we do FILTERING later...
