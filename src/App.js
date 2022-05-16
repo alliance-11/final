@@ -7,13 +7,13 @@ import { Todo } from "./components/todo/Todo";
 import { Students } from "./components/students/Students";
 import "./App.scss";
 import { createContext } from "react";
-import { DataProvider } from "./components/context/DataProvider";
+import { DataContext } from "./components/context/DataContext";
 
 export const Context = createContext();
 
 function App() {
   return (
-    <DataProvider>
+    <DataContext>
       <div className="App">
         <Nav />
         <Routes>
@@ -24,7 +24,7 @@ function App() {
           <Route path="students" element={<Students />} />
         </Routes>
       </div>
-    </DataProvider>
+    </DataContext>
   );
 }
 

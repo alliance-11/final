@@ -3,11 +3,11 @@ import { Add } from "./Add";
 import { List } from "./List";
 import { Search } from "./Search";
 
+import todoData from "../../data/todo.json"
+
 import "./Todo.scss";
 export const Todo = () => {
-  const [todos, setTodos] = useState([
-    { _id: "1t", todo: "Learn JS", description: "as soon as possible!" },
-  ]);
+  const [todos, setTodos] = useState(todoData);
   const [search, setSearch] = useState("");
 
   const addTodo = (newTodo) => {

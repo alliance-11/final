@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react";
-import { Context } from "../context/DataProvider";
+import { Context } from "../context/DataContext";
 import { AddForm } from "./AddForm";
 import "./Teachers.scss";
 import { TeachersList } from "./TeachersList";

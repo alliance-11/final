@@ -4,7 +4,7 @@ import { AddForm } from "./AddForm";
 import { Header } from "./Header";
 import { UsersList } from "./UsersList";
 import { Search } from "./Search";
-import { Context } from "../context/DataProvider";
+import { Context } from "../context/DataContext";
 
 export const Users = () => {
   const [search, setSearch] = useState("");

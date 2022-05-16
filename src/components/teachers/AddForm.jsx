@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from 'react'
-import { Context } from '../context/DataProvider';
+import { Context } from '../context/DataContext';
 
 export const AddForm = () => {
   const {addTeacher}=useContext(Context)

@@ -4,7 +4,7 @@ import teachersData from "../../data/teachers.json";
 import studentsData from "../../data/students.json";
 export const Context = createContext();
 
-export const DataProvider = (props) => {
+export const DataContext = (props) => {
   // useEffect hooks
   // 1. runs AFTER first render to load the DATA from API
   // 2. loads data asynchronously using fetch
@@ -43,6 +43,10 @@ export const DataProvider = (props) => {
   const [users, setUsers] = useState(usersData);
   const [teachers, setTeachers] = useState(teachersData);
   const [students, setStudents] = useState(studentsData);
+  const [todos, setTodos] = useState([
+    { _id: "1t", todo: "Learn JS", description: "as soon as possible!" },
+  ]);
+
   // 1. add data to API first !
   // 2. if successful => also add item to STATE (=> frontend data)
   const addTeacher = async (teacherNew) => {
@@ -149,11 +153,13 @@ export const DataProvider = (props) => {
 
   const sharedData = {
     users,
-    teachers,
-    students,
     setUsers,
+    teachers,
     setTeachers,
+    students,
     setStudents,
+    todos,
+    setTodos,
     addTeacher,
     editTeacher,
     deleteTeacher,

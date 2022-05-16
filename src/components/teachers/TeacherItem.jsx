@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
-import { Context } from "../context/DataProvider";
+import { Context } from "../context/DataContext";
 
 export const TeacherItem = ({ teacher }) => {
   const {editTeacher, deleteTeacher}=useContext(Context)
