@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-
+import usersData from "../../data/users.json";
+import teachersData from "../../data/teachers.json";
+import studentsData from "../../data/students.json";
 export const Context = createContext();
 
 export const DataProvider = (props) => {
@@ -30,56 +32,17 @@ export const DataProvider = (props) => {
 
       // TODO: LOAD STUDENTS...
       //load STUDENTS
-      response = await fetch(`${process.env.REACT_APP_API_URL}/students`)
-      const studentsApi=await response.json();
+      response = await fetch(`${process.env.REACT_APP_API_URL}/students`);
+      const studentsApi = await response.json();
       console.log(studentsApi);
-      setStudents(studentsApi)
+      setStudents(studentsApi);
     };
     fetchData();
   }, []); // just run it ONCE after first render
 
-  const [users, setUsers] = useState([
-    {
-      _id: "1",
-      name: "Gael",
-      profession: "Web Dev Consultant",
-      hobby: "playing computer games",
-      email: "gael@gmail.com",
-      city: "Berlin",
-    },
-    {
-      _id: "2",
-      name: "Robert",
-      profession: "Web Dev Trainer",
-      hobby: "reading",
-      email: "robert@gmail.com",
-      city: "Berlin",
-    },
-    {
-      _id: "3",
-      name: "Elisa",
-      profession: "JavaScript Engineer",
-      hobby: "JavaScript",
-      email: "elisa@gmail.com",
-      city: "Hamburg",
-    },
-  ]);
-  const [teachers, setTeachers] = useState([
-    { _id: "1", name: "Robert", city: "Berlin" },
-    { _id: "2", name: "Marlene", city: "Hamburg" },
-    { _id: "3", name: "Olaf", city: "Hamburg" },
-    { _id: "4", name: "Julian", city: "Berlin" },
-    { _id: "5", name: "Heiko", city: "Hamburg" },
-    { _id: "6", name: "Gael", city: "Berlin" },
-  ]);
-  const [students, setStudents] = useState([
-    { _id: "1", name: "Niko", specialization: "Full Stack" },
-    { _id: "2", name: "Heba", specialization: "Full Stack" },
-    { _id: "3", name: "Osama", specialization: "Backend" },
-    { _id: "4", name: "Elisa", specialization: "Frontend" },
-    { _id: "5", name: "Stephan", specialization: "Full Stack" },
-  ]);
-
+  const [users, setUsers] = useState(usersData);
+  const [teachers, setTeachers] = useState(teachersData);
+  const [students, setStudents] = useState(studentsData);
   // 1. add data to API first !
   // 2. if successful => also add item to STATE (=> frontend data)
   const addTeacher = async (teacherNew) => {
@@ -130,15 +93,15 @@ export const DataProvider = (props) => {
   };
 
   const addStudent = async (studentNew) => {
-console.log(studentNew);
+    console.log(studentNew);
 
-const response = await fetch(`${process.env.REACT_APP_API_URL}/students`, {
-  method: 'POST',
-  body: JSON.stringify(studentNew),
-  headers: {"Content-Type": 'application/json',},
-})
-const studentNewApi= await response.json();
-console.log(studentNewApi);
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/students`, {
+      method: "POST",
+      body: JSON.stringify(studentNew),
+      headers: { "Content-Type": "application/json" },
+    });
+    const studentNewApi = await response.json();
+    console.log(studentNewApi);
 
     setStudents([...students, studentNewApi]);
   };
@@ -156,9 +119,8 @@ console.log(studentNewApi);
       body: JSON.stringify(studentData),
       headers: {
         "Content-Type": "application/json",
-      }
-    })
-
+      },
+    });
 
     const updateStudent = students.map((student) =>
       student._id === id ? { ...student, studentData } : student
@@ -173,10 +135,9 @@ console.log(studentNewApi);
   // };
 
   const deleteStudent = async (id) => {
-
-await fetch(`${process.env.REACT_APP_API_URL}/students/${id}`, { 
-  method: "DELETE",
-})
+    await fetch(`${process.env.REACT_APP_API_URL}/students/${id}`, {
+      method: "DELETE",
+    });
 
     const deleteItem = students.filter((student) => student._id !== id);
     setStudents(deleteItem);

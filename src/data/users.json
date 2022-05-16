@@ -1,6 +1,6 @@
 [
     {
-        "id": "1",
+        "_id": "1",
         "name": "Gael",
         "profession": "Web Dev Consultant",
         "hobby": "playing computer games",
@@ -8,7 +8,7 @@
         "city": "Berlin"
     },
     {
-        "id": "2",
+        "_id": "2",
         "name": "Robert",
         "profession": "Web Dev Trainer",
         "hobby": "reading",
@@ -16,7 +16,7 @@
         "city": "Berlin"
     },
     {
-        "id": "3",
+        "_id": "3",
         "name": "Elisa",
         "profession": "JavaScript Engineer",
         "hobby": "JavaScript",

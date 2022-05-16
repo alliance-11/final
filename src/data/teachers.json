@@ -1,31 +1,31 @@
 [
     {
-        "id": "1",
+        "_id": "1",
         "name": "Robert",
         "city": "Berlin"
     },
     {
-        "id": "2",
+        "_id": "2",
         "name": "Marlene",
         "city": "Hamburg"
     },
     {
-        "id": "3",
+        "_id": "3",
         "name": "Olaf",
         "city": "Hamburg"
     },
     {
-        "id": "4",
+        "_id": "4",
         "name": "Julian",
         "city": "Berlin"
     },
     {
-        "id": "5",
+        "_id": "5",
         "name": "Heiko",
         "city": "Hamburg"
     },
     {
-        "id": "6",
+        "_id": "6",
         "name": "Gael",
         "city": "Berlin"
     }
