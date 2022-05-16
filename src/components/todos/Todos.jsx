@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Add } from "./Add";
 import { List } from "./List";
 import { Search } from "./Search";
+// import todosData from "../../data/todos.json"
+import { Context } from "../context/DataContext";
+import "./Todos.scss";
 
-import todoData from "../../data/todo.json"
 
-import "./Todo.scss";
-export const Todo = () => {
-  const [todos, setTodos] = useState(todoData);
+export const Todos = () => {
+  const [todos, setTodos] = useContext(Context);
   const [search, setSearch] = useState("");
 
   const addTodo = (newTodo) => {
@@ -29,7 +30,7 @@ export const Todo = () => {
   );
 
   return (
-    <div className="Todo">
+    <div className="Todos">
       <h2>
         {handleSearch.length} List{" "}
         {handleSearch.length === 1 ? "Todo ✨" : "Todos ✨"}

@@ -31,10 +31,10 @@ export const Nav = () => {
         Students
       </NavLink>
       <NavLink
-        to="/todo"
+        to="/todos"
         className={(navData) => (navData.isActive ? "active" : "none")}
       >
-        Todo
+        Todos
       </NavLink>
     </nav>
   )

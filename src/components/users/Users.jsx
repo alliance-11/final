@@ -1,19 +1,19 @@
 import { useContext, useState } from "react";
-import "./Users.scss";
 import { AddForm } from "./AddForm";
 import { Header } from "./Header";
 import { UsersList } from "./UsersList";
 import { Search } from "./Search";
 import { Context } from "../context/DataContext";
+import "./Users.scss";
 
 export const Users = () => {
-  const [search, setSearch] = useState("");
   const {users, setUsers} =useContext(Context)
+  const [search, setSearch] = useState("");
 
   //Add
   const addUser = (userNew) => {
     const userNewState = {
-      id: Date.now().toString(),
+      _id: Date.now().toString(),
       ...userNew,
     };
     setUsers([...users, userNewState]);
