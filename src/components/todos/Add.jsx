@@ -1,10 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 
 export const Add = ({ addTodo }) => {
   const [newTodo, setNewTodo] = useState({
-    todo: "",
+    title: "",
     description: "",
   });
+
   const inputRef = useRef();
 
   const handleAddTodo = (e) => {
@@ -13,7 +14,7 @@ export const Add = ({ addTodo }) => {
 
   const submitAdd = () => {
     addTodo(newTodo);
-    setNewTodo({ ...newTodo, todo: "", description: "" });
+    setNewTodo({ ...newTodo, title: "", description: "" });
   };
 
   return (
@@ -21,11 +22,11 @@ export const Add = ({ addTodo }) => {
       <input
         autoFocus
         ref={inputRef}
-        required
         type="text"
-        name="todo"
-        placeholder="Todo"
-        value={newTodo.todo}
+        name="title"
+        placeholder="Title"
+        required
+        value={newTodo.title}
         onChange={handleAddTodo}
       />
       <input
@@ -35,7 +36,7 @@ export const Add = ({ addTodo }) => {
         value={newTodo.description}
         onChange={handleAddTodo}
       />
-      <button onClick={submitAdd}>Add</button>
+      <button onClick={() => submitAdd(inputRef.current.focus())}>Add</button>
     </div>
   );
 };

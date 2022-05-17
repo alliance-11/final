@@ -9,10 +9,10 @@ export const Search = ({ search, setSearch }) => {
         }}
       >
         <input
-          type="text"
           id="search"
-          placeholder="Search"
+          type="text"
           role="search"
+          placeholder="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />

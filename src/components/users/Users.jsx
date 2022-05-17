@@ -7,7 +7,7 @@ import { Context } from "../context/DataContext";
 import "./Users.scss";
 
 export const Users = () => {
-  const {users, setUsers} =useContext(Context)
+  const { users, setUsers } = useContext(Context);
   const [search, setSearch] = useState("");
 
   //Add

@@ -1,44 +1,54 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import todosData from "../../data/todos.json";
 import { Add } from "./Add";
 import { List } from "./List";
 import { Search } from "./Search";
-// import todosData from "../../data/todos.json"
-import { Context } from "../context/DataContext";
 import "./Todos.scss";
 
-
 export const Todos = () => {
-  const [todos, setTodos] = useContext(Context);
+  const [todos, setTodos] = useState(todosData);
   const [search, setSearch] = useState("");
 
-  const addTodo = (newTodo) => {
-    const addNewTodo = {
+  const addTodo = (todoNew) => {
+    const todoNewState = {
       _id: Date.now().toString(),
-      ...newTodo,
+      ...todoNew,
     };
-    setTodos([...todos, addNewTodo]);
+    setTodos([...todos, todoNewState]);
   };
 
-  const handleDelete = (id) => {
-    const deleteItem = todos.filter((todo) => todo._id !== id);
-    setTodos(deleteItem);
+  const editTodo = (id, todoData) => {
+    const updataTodo = todos.map((todo) =>
+      todo._id === id ? { ...todo, ...todoData } : todo
+    );
+    setTodos(updataTodo);
   };
-  const handleSearch = todos.filter(
+
+  const deleteTodo = (id) => {
+    const todoDelete = todos.filter((todo) => todo._id !== id);
+    setTodos(todoDelete);
+  };
+
+  const filteredTodos = todos.filter(
     (todo) =>
-      todo.todo.toLowerCase().includes(search.toLowerCase()) ||
+      todo.title.toLowerCase().includes(search.toLowerCase()) ||
       todo.description.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div className="Todos">
       <h2>
-        {handleSearch.length} List{" "}
-        {handleSearch.length === 1 ? "Todo ✨" : "Todos ✨"}
+        {filteredTodos.length} List
+        {filteredTodos.length === 1 ? "Todo" : "Todos"}
       </h2>
       <div className="container">
-        <Add addTodo={addTodo} />
         <Search search={search} setSearch={setSearch} />
-        <List handleDelete={handleDelete} todos={handleSearch} />
+        <Add addTodo={addTodo} />
+        <List
+          todos={filteredTodos}
+          editTodo={editTodo}
+          deleteTodo={deleteTodo}
+        />
       </div>
     </div>
   );

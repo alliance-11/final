@@ -36,16 +36,15 @@ export const DataContext = (props) => {
       const studentsApi = await response.json();
       console.log(studentsApi);
       setStudents(studentsApi);
+
     };
+
     fetchData();
   }, []); // just run it ONCE after first render
 
   const [users, setUsers] = useState(usersData);
   const [teachers, setTeachers] = useState(teachersData);
   const [students, setStudents] = useState(studentsData);
-  const [todos, setTodos] = useState([
-    { _id: "1t", todo: "Learn JS", description: "as soon as possible!" },
-  ]);
 
   // 1. add data to API first !
   // 2. if successful => also add item to STATE (=> frontend data)
@@ -158,8 +157,6 @@ export const DataContext = (props) => {
     setTeachers,
     students,
     setStudents,
-    todos,
-    setTodos,
     addTeacher,
     editTeacher,
     deleteTeacher,
