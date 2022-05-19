@@ -1,12 +1,14 @@
-import { useState } from "react";
-import todosData from "../../data/todos.json";
+import { useContext, useState } from "react";
+import { Context } from "../context/DataContext";
+// import todosData from "../../data/todos.json";
 import { Add } from "./Add";
 import { List } from "./List";
 import { Search } from "./Search";
 import "./Todos.scss";
 
 export const Todos = () => {
-  const [todos, setTodos] = useState(todosData);
+  // const [todos, setTodos] = useState(todosData);
+  const {todos, setTodos} = useContext(Context)
   const [search, setSearch] = useState("");
 
   const addTodo = (todoNew) => {
@@ -18,10 +20,10 @@ export const Todos = () => {
   };
 
   const editTodo = (id, todoData) => {
-    const updataTodo = todos.map((todo) =>
+    const updateTodo = todos.map((todo) =>
       todo._id === id ? { ...todo, ...todoData } : todo
     );
-    setTodos(updataTodo);
+    setTodos(updateTodo);
   };
 
   const deleteTodo = (id) => {

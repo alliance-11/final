@@ -14,7 +14,10 @@ export const Add = ({ addTodo }) => {
 
   const submitAdd = () => {
     addTodo(newTodo);
-    setNewTodo({ ...newTodo, title: "", description: "" });
+    setNewTodo({ 
+      ...newTodo, 
+      title: "", 
+      description: "" });
   };
 
   return (

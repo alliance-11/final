@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import usersData from "../../data/users.json";
 import teachersData from "../../data/teachers.json";
 import studentsData from "../../data/students.json";
+import todosData from "../../data/todos.json"
 export const Context = createContext();
 
 export const DataContext = (props) => {
@@ -37,6 +38,11 @@ export const DataContext = (props) => {
       console.log(studentsApi);
       setStudents(studentsApi);
 
+      response = await fetch(`${process.env.REACT_APP_API_URL}/todos`);
+      const todosApi = await response.json();
+      console.log(todosApi);
+      setTodos(todosApi);
+
     };
 
     fetchData();
@@ -45,6 +51,7 @@ export const DataContext = (props) => {
   const [users, setUsers] = useState(usersData);
   const [teachers, setTeachers] = useState(teachersData);
   const [students, setStudents] = useState(studentsData);
+  const [todos, setTodos] = useState(todosData);
 
   // 1. add data to API first !
   // 2. if successful => also add item to STATE (=> frontend data)
@@ -157,6 +164,8 @@ export const DataContext = (props) => {
     setTeachers,
     students,
     setStudents,
+    todos,
+    setTodos,
     addTeacher,
     editTeacher,
     deleteTeacher,
