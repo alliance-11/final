@@ -34,7 +34,7 @@ export const Users = () => {
   };
 
   // apply given search filter to users array
-  const filteredStudents = users.filter(
+  const filteredUsers = users.filter(
     (user) =>
       user.name.toLowerCase().includes(search.toLowerCase()) || // ONE criteria
       user.hobby.toLowerCase().includes(search.toLowerCase()) ||
@@ -44,13 +44,13 @@ export const Users = () => {
   // LAYOUT
   return (
     <div className="Users">
-      <Header length={filteredStudents.length} />
+      <Header length={filteredUsers.length} />
       <div className="container">
         <Search search={search} setSearch={setSearch} />
         <AddForm addUser={addUser} />
         {users.length ? (
           <UsersList
-            users={filteredStudents}
+            users={filteredUsers}
             handleDelete={handleDelete}
             editUser={editUser}
           />
